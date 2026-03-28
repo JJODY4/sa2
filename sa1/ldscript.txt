@@ -1,0 +1,624 @@
+/* Hack for matching? */ 
+gNumMusicPlayers = 4;
+gMaxLines = 0;
+
+SECTIONS {
+    . = 0x8000000;
+    ROM :
+    ALIGN(4) {
+        /* Engine */
+        src/rom_header.o(.text);
+        src/crt0.o(.text);
+        src/multi_sio_asm.o(.text);
+        data/rom_header_old.o(.text);
+        src/core.o(.text);
+        src/main.o(.text);
+        src/task.o(.text);
+        src/background.o(.text);
+        src/sprite.o(.text);
+        src/bg_triangles.o(.text);
+        src/malloc_ewram.o(.text);
+        src/malloc_vram.o(.text);
+        src/multi_sio.o(.text);
+        src/multi_boot.o(.text);
+        src/sio32_multi_load.o(.text);
+
+        /* Game */
+        src/game/sa1_sa2_shared/rings_manager.o(.text);
+        src/game/sa1_sa2_shared/entities_manager.o(.text);
+        src/game/sa1_sa2_shared/collision_0.o(.text);
+        src/game/sa1_sa2_shared/collision.o(.text);
+        src/game/sa1_sa2_shared/palette_loader.o(.text);
+        src/game/title_screen.o(.text);
+        src/game/sa1_sa2_shared/unused_level_select.o(.text);
+        src/game/multiplayer/mode_select.o(.text);
+        src/game/multiplayer/mode_select_2.o(.text);
+        src/game/time_attack/menu.o(.text);
+        src/game/options_menu.o(.text);
+        src/game/player_data_menu.o(.text);
+        src/game/sa1_sa2_shared/spot_light_beam_task.o(.text);
+        src/game/to_be_continued_screen.o(.text);
+        src/game/sa1_sa2_shared/enemy_defeat_score.o(.text);
+        src/game/sa1_sa2_shared/demo_manager.o(.text);
+        src/game/save.o(.text);
+        src/game/sa1_sa2_shared/unused_flash_task.o(.text);
+        src/game/multiplayer/mp_player.o(.text);
+        src/game/multiplayer/indicators.o(.text);
+        src/game/enemies/bosses_egg_mobile.o(.text);
+        src/game/enemies/bosses_misc.o(.text);
+        src/game/nuts_and_bolts_task.o(.text);
+        src/game/sa1_sa2_shared/spot_lights_manager.o(.text);
+        src/game/multiplayer/multiplayer_event_mgr.o(.text);
+        src/game/multiplayer/multiplayer_event_recv_mgr.o(.text);
+        src/game/multiplayer/results.o(.text);
+        src/game/multiplayer/results_b.o(.text);
+        src/game/multiplayer/finish.o(.text);
+        src/game/sa1_sa2_shared/pause_menu.o(.text);
+        src/game/multiplayer/results_2.o(.text);
+        src/game/multiplayer/hud.o(.text);
+        src/game/mystery_itembox.o(.text);
+        src/game/multiplayer/unk_0.o(.text);
+        src/game/multiplayer/unk_1.o(.text);
+        src/game/enemies/kiki.o(.text);
+        src/game/enemies/buzzer.o(.text);
+        src/game/sa1_sa2_shared/collect_ring_effect.o(.text);
+        src/game/sa1_sa2_shared/itembox.o(.text);
+        src/game/interactables/stage_goal.o(.text);
+        src/game/sa1_sa2_shared/dust_cloud.o(.text);
+        src/game/interactables/spikes.o(.text);
+        src/game/interactables/checkpoint.o(.text);
+        src/game/interactables/spring.o(.text);
+        src/game/interactables/decoration.o(.text);
+        src/game/interactables/toggle_player_layer.o(.text);
+        src/game/interactables/grind_rail.o(.text);
+        src/game/interactables/platform_thin.o(.text);
+        src/game/sa1_sa2_shared/magnetic_ring.o(.text);
+        src/game/interactables/platform_crumbling.o(.text);
+        src/game/interactables/fadein_to_be_continued.o(.text);
+        src/game/special_stage/temporary_sound_play_task.o(.text);
+        src/game/enemies/boss_1_egg_hammer_tank.o(.text);
+        src/game/interactables/breakable_wall.o(.text);
+        src/game/mp_chao.o(.text);
+        src/game/egg_rocket_transitions.o(.text);
+        src/game/special_stage/main.o(.text);
+        src/game/enemies/boss_2_egg_press.o(.text);
+        src/game/enemies/boss_3_egg_ball.o(.text);
+        src/game/enemies/boss_4_egg_spider.o(.text);
+        src/game/enemies/boss_6_egg_snake.o(.text);
+        src/game/enemies/boss_x1_egg_wrecker.o(.text);
+        src/game/enemies/boss_x2_egg_drillster.o(.text);
+        src/game/enemies/boss_x3_egg_x.o(.text);
+
+        src/game/multiplayer/chao_message.o(.text);
+        src/game/multiplayer/communication_outcome.o(.text);
+        src/game/amy_attack_heart_effect.o(.text);
+        src/game/sa1_sa2_shared/music_manager.o(.text);
+        src/game/game.o(.text);
+        src/game/dummy_task.o(.text);
+        src/game/stage/stage.o(.text);
+        src/game/stage/camera.o(.text);
+        src/game/stage/backgrounds/zone_1.o(.text);
+        src/game/stage/backgrounds/zone_2_interior.o(.text);
+        src/game/stage/backgrounds/zone_3.o(.text);
+        src/game/stage/backgrounds/zone_4.o(.text);
+        src/game/stage/backgrounds/zone_6.o(.text);
+        src/game/stage/backgrounds/zone_7_act_2.o(.text);
+        src/game/stage/camera_destroy.o(.text);
+        src/game/stage/backgrounds/zone_4_init.o(.text);
+        src/game/stage/backgrounds/zone_5_init.o(.text);
+        src/game/stage/backgrounds/zone_7_act_1.o(.text);
+        src/game/stage/backgrounds/zone_7_act_2_init.o(.text);
+        src/game/stage/backgrounds/zone_2.o(.text);
+        src/game/stage/backgrounds/zone_5.o(.text);
+        src/game/stage/backgrounds/zone_3_firework.o(.text);
+        src/game/stage/backgrounds/zone_6_hblank.o(.text);
+        src/game/stage/terrain_collision.o(.text);
+        src/game/stage/mp_sprite_task.o(.text);
+        src/game/stage/dust_effect_braking.o(.text);
+        src/game/stage/dust_effect_spindash.o(.text);
+        src/game/stage/grind_effect_1.o(.text);
+        src/game/stage/rings_scatter.o(.text);
+        src/game/stage/player.o(.text);
+        src/game/stage/player_sonic.o(.text);
+        src/game/stage/player_tails.o(.text);
+        src/game/stage/player_knuckles.o(.text);
+        src/game/stage/player_amy.o(.text);
+        src/game/stage/player_super_sonic.o(.text);
+        src/game/stage/item_tasks.o(.text);
+        src/game/stage/underwater_effects.o(.text);
+        src/game/water_effects.o(.text);
+        src/game/stage/screen_shake.o(.text);
+        src/input_recorder.o(.text);
+        src/game/some_task_manager.o(.text);
+        src/game/interactables/half_pipe.o(.text);
+        src/game/interactables/034.o(.text);
+        src/game/interactables/mini_loop_boost.o(.text);
+        src/game/interactables/water_bridge.o(.text);
+        src/game/interactables/water_bridge_splash.o(.text);
+        src/game/interactables/mini_loop.o(.text);
+        src/game/interactables/039.o(.text);
+        src/game/enemies/boss_5_mecha_knuckles.o(.text);
+        src/game/enemies/boss_xtra_super_egg_robot.o(.text);
+        src/game/stage/ui_rendering.o(.text);
+        src/game/stage/ui.o(.text);
+        src/game/stage/trapped_animals.o(.text);
+        src/game/stage/ui_z.o(.text);
+        src/game/game_over.o(.text);
+        src/game/stage/results.o(.text);
+        src/game/player_name_input_menu.o(.text);
+        src/game/character_select.o(.text);
+        src/game/time_over.o(.text);
+        src/game/special_stage/game_2_0.o(.text);
+        src/game/game_2_1.o(.text);
+        src/game/staff_credits.o(.text);
+        src/game/sound_test.o(.text);
+        src/game/vs_record.o(.text);
+        src/game/time_attack_record.o(.text);
+        src/game/course_select.o(.text);
+        src/game/game_2_3.o(.text);
+        src/game/intro_animation.o(.text);
+        src/game/extra_stage_results.o(.text);
+        src/game/special_stage/intro.o(.text);
+        src/game/collect_chaos_emeralds_msg.o(.text);
+        src/game/time_attack/results.o(.text);
+        src/game/time_attack/lobby.o(.text);
+        src/game/edit_language_screen.o(.text);
+        src/game/multiplayer/continue_screen.o(.text);
+        src/game/time_attack/records.o(.text);
+
+        src/game/enemies/gamigami.o(.text);
+        src/game/enemies/rhinotank.o(.text);
+        src/game/enemies/kerokero.o(.text);
+        src/game/enemies/hanabii.o(.text);
+        src/game/enemies/pierrot.o(.text);
+        src/game/enemies/slot.o(.text);
+        src/game/enemies/leon.o(.text);
+        src/game/enemies/wamu.o(.text);
+        src/game/enemies/mirror.o(.text);
+        src/game/enemies/oct.o(.text);
+        src/game/enemies/senbon.o(.text);
+        src/game/enemies/fireball.o(.text);
+        src/game/enemies/mole.o(.text);
+        src/game/enemies/yukimaru.o(.text);
+        src/game/enemies/drisame.o(.text);
+        src/game/enemies/kuraa.o(.text);
+        src/game/enemies/pen_mk1.o(.text);
+        src/game/enemies/tentou.o(.text);
+
+        src/game/interactables/trampoline.o(.text);
+        src/game/interactables/bounce_block.o(.text);
+        src/game/interactables/incline_ramp.o(.text);
+        src/game/interactables/waterfall.o(.text);
+        src/game/interactables/shrubbery.o(.text);
+        src/game/interactables/booster.o(.text);
+        src/game/interactables/red_flag_and_pole.o(.text);
+        src/game/interactables/forced_slide.o(.text);
+        src/game/interactables/bumpers.o(.text);
+        src/game/interactables/flippers.o(.text);
+        src/game/interactables/platform_square.o(.text);
+        src/game/interactables/sega_sonic_letters.o(.text);
+        src/game/interactables/party_balloon.o(.text);
+        src/game/interactables/ship_swing.o(.text);
+        src/game/interactables/platform_spiked.o(.text);
+        src/game/interactables/bowl.o(.text);
+        src/game/interactables/panel_gate.o(.text);
+        src/game/interactables/marble_track.o(.text);
+        src/game/interactables/conveyor_belt_movement.o(.text);
+        src/game/interactables/toggle_player_visibility.o(.text);
+        src/game/interactables/wall_bumper.o(.text);
+        src/game/interactables/teleport_orb.o(.text);
+        src/game/interactables/flipper_small_blue.o(.text);
+        src/game/interactables/carousel.o(.text);
+        src/game/interactables/hook_rail.o(.text);
+        src/game/interactables/swinging_hook.o(.text);
+        src/game/interactables/security_gate.o(.text);
+        src/game/interactables/swing_rope.o(.text);
+        src/game/interactables/steam_exhaust.o(.text);
+        src/game/interactables/crane_claw_and_lift.o(.text);
+        src/game/interactables/moving_spring.o(.text);
+        src/game/interactables/iron_ball.o(.text);
+        src/game/interactables/hang_bar.o(.text);
+        src/game/interactables/skating_stone.o(.text);
+        src/game/interactables/platforms_085_089.o(.text);
+        src/game/interactables/run_wheel.o(.text);
+        src/game/interactables/torch.o(.text);
+        src/game/interactables/toggle_player_float.o(.text);
+        src/game/interactables/ferris_wheel.o(.text);
+        src/game/interactables/boulder_spawner.o(.text);
+        src/game/interactables/spiked_barrel.o(.text);
+        src/game/interactables/air_bubbles.o(.text);
+        src/game/interactables/ice_block.o(.text);
+        src/game/interactables/096.o(.text);
+        src/game/interactables/updraft.o(.text);
+        src/game/interactables/underwater_lava_platform.o(.text);
+        src/game/interactables/conveyor_belt_object.o(.text);
+        src/game/interactables/special_spring.o(.text);
+        src/game/interactables/propeller.o(.text);
+        src/game/interactables/small_fall_block.o(.text);
+        src/game/interactables/lava.o(.text);
+        src/game/interactables/track.o(.text);
+        src/game/interactables/107.o(.text);
+        src/game/interactables/spring_hiding.o(.text);
+        src/game/interactables/toggle_gravity.o(.text);
+        src/game/interactables/pipe.o(.text);
+        src/game/interactables/maze_air_corner.o(.text);
+        src/game/interactables/113.o(.text);
+
+        /* Libs */
+        src/lib/m4a/m4a0.o(.text);
+        src/lib/m4a/m4a.o(.text);
+        src/lib/agb_flash/agb_flash.o(.text);
+        src/lib/agb_flash/agb_flash_le_512k.o(.text);
+        src/lib/agb_flash/agb_flash_mx_512k.o(.text);
+        src/lib/agb_flash/agb_flash_at_512k.o(.text);
+
+        *libagbsyscall.a:ArcTan2.o(.text);
+        *libagbsyscall.a:CpuFastSet.o(.text);
+        *libagbsyscall.a:CpuSet.o(.text);
+        *libagbsyscall.a:Div.o(.text);
+        *libagbsyscall.a:Mod.o(.text);
+        *libagbsyscall.a:LZ77UnCompWram.o(.text);
+        *libagbsyscall.a:MultiBoot.o(.text);
+        *libagbsyscall.a:RLUnCompWram.o(.text);
+        *libagbsyscall.a:SoftReset.o(.text);
+        *libagbsyscall.a:Sqrt.o(.text);
+        *libagbsyscall.a:VBlankIntrWait.o(.text);
+        *libagbsyscall.a:SoftResetExram.o(.text);
+
+        *libgcc.a:_call_via_rX.o(.text);
+        *libgcc.a:_divdi3.o(.text);
+        *libgcc.a:_divsi3.o(.text);
+        *libgcc.a:_dvmd_tls.o(.text);
+        *libgcc.a:_modsi3.o(.text);
+        *libgcc.a:_udivsi3.o(.text);
+        *libgcc.a:_umodsi3.o(.text);
+        *libgcc.a:dp-bit.o(.text);
+        *libgcc.a:fp-bit.o(.text);
+        *libgcc.a:_lshrdi3.o(.text);
+        *libgcc.a:_muldi3.o(.text);
+        *libgcc.a:_negdi2.o(.text);
+        *libgcc.a:_udivsi3.o(.text);
+        *libc.a:memcpy.o(.text);
+        *libc.a:memset.o(.text);
+    
+    /* Data */
+
+        src/core.o(.rodata);
+        src/background.o(.rodata);
+        src/trig.o(.rodata);
+        src/sprite.o(.rodata);
+        src/bg_triangles.o(.rodata);
+        src/multi_sio.o(.rodata);
+        src/sio32_multi_load.o(.rodata);
+        src/data/tileset_debug_ascii.o(.rodata);
+        src/game/save.o(.rodata);
+        data/chao_garden.o(.rodata);
+        src/data/entity_tables.o(.rodata);
+        src/game/sa1_sa2_shared/entities_manager.o(.rodata);
+        src/game/sa1_sa2_shared/itembox.o(.rodata);
+        src/game/title_screen.o(.rodata);
+        src/game/sa1_sa2_shared/unused_level_select.o(.rodata);
+        src/game/multiplayer/mode_select.o(.rodata);
+        src/game/time_attack/menu.o(.rodata);
+        src/game/options_menu.o(.rodata);
+        src/game/player_data_menu.o(.rodata);
+        src/game/sa1_sa2_shared/unused_flash_task.o(.rodata);
+        data/data_0_1_2.o(.rodata);
+        src/game/multiplayer/multiplayer_event_mgr.o(.rodata);
+        src/game/multiplayer/results_b.o(.rodata);
+        src/game/multiplayer/results.o(.rodata);
+        src/game/multiplayer/finish.o(.rodata);
+        src/game/multiboot/collect_rings/time_display.o(.rodata);
+        src/game/mystery_itembox.o(.rodata);
+        src/game/interactables/spring.o(.rodata);
+        src/game/interactables/platform_thin.o(.rodata);
+        src/game/interactables/platform_crumbling.o(.rodata);
+        data/data_0_1_4.o(.rodata);
+        src/game/mp_chao.o(.rodata);
+        src/data/tilemap_data_0.o(.rodata);
+        src/data/sprite_tables.o(.rodata);
+        src/data/animations/animations.o(.rodata);
+        src/data/animations/animation_table.o(.data);
+        src/data/sprite_dimensions.o(.rodata);
+        src/data/oam_data.o(.rodata);
+        src/data/obj_palettes.o(.rodata);
+        data/obj_gfx.o(.rodata);
+        src/game/special_stage/main.o(.rodata);
+        data/data_0_2.o(.rodata);
+        src/data/tilemaps_special_stage.o(.rodata);
+        src/data/tilemaps_special_stage.o(.data);
+        data/data_0_3.o(.rodata);
+        src/data/tilemap_data_2.o(.rodata);
+        data/data_0_3_2.o(.rodata);
+        src/game/multiplayer/communication_outcome.o(.rodata);
+        src/game/amy_attack_heart_effect.o(.rodata);
+        src/game/sa1_sa2_shared/music_manager.o(.rodata);
+        src/game/stage/stage.o(.rodata);
+        src/game/stage/camera.o(.rodata);
+        src/data/tilemap_table.o(.rodata);
+        src/game/stage/terrain_collision.o(.rodata);
+        data/data_0_4.o(.rodata);
+        src/game/enemies/boss_5_mecha_knuckles.o(.rodata);
+        src/game/enemies/boss_xtra_super_egg_robot.o(.rodata);
+        src/data/tilemap_data_3.o(.rodata);
+        data/data_0_5_0.o(.rodata);
+        src/data/ui_graphics_data.o(.rodata);
+        data/data_0_5.o(.rodata);
+        src/data/ui_graphics_table.o(.rodata);
+        src/game/stage/trapped_animals.o(.rodata);
+        data/data_0_5_2.o(.rodata);
+        src/game/character_select.o(.rodata);
+        src/game/special_stage/game_2_0.o(.rodata);
+        src/game/game_2_1.o(.rodata);
+        src/game/staff_credits.o(.rodata);
+        src/data/credits.o(.rodata);
+        data/data_sound_test.o(.rodata);
+        src/game/sound_test.o(.rodata);
+        data/data_0_6.o(.rodata);
+        src/game/course_select.o(.rodata);
+        src/game/game_2_3.o(.rodata);
+        src/game/intro_animation.o(.rodata);
+        data/data_0_6_0.o(.rodata);
+        src/game/time_attack/results.o(.rodata);
+        data/data_0_6_1.o(.rodata);
+        src/game/time_attack/records.o(.rodata);
+        data/data_0_6_2.o(.rodata);
+        src/game/enemies/kerokero.o(.rodata);
+        src/game/enemies/drisame.o(.rodata);
+        data/data_0_7.o(.rodata);
+        src/game/interactables/red_flag_and_pole.o(.rodata);
+        src/game/interactables/forced_slide.o(.rodata);
+        src/game/interactables/sega_sonic_letters.o(.rodata);
+        src/game/interactables/bowl.o(.rodata);
+        src/game/interactables/hang_bar.o(.rodata);
+        src/game/interactables/platforms_085_089.o(.rodata);
+        src/game/interactables/ferris_wheel.o(.rodata);
+        src/game/interactables/spiked_barrel.o(.rodata);
+        src/game/interactables/air_bubbles.o(.rodata);
+        src/data/entities.o(.rodata);
+        src/lib/m4a/m4a_tables.o(.rodata);
+        data/sound_data.o(.rodata);
+        sound/songs/song001.o(.rodata);
+        sound/songs/midi/song002.o(.rodata);
+        sound/songs/midi/song003.o(.rodata);
+        sound/songs/midi/song004.o(.rodata);
+        sound/songs/midi/song005.o(.rodata);
+        sound/songs/midi/song006.o(.rodata);
+        sound/songs/midi/song007.o(.rodata);
+        sound/songs/midi/song008.o(.rodata);
+        sound/songs/midi/song009.o(.rodata);
+        sound/songs/midi/song010.o(.rodata);
+        sound/songs/midi/song011.o(.rodata);
+        sound/songs/midi/song012.o(.rodata);
+        sound/songs/midi/song013.o(.rodata);
+        sound/songs/midi/song014.o(.rodata);
+        sound/songs/midi/song015.o(.rodata);
+        sound/songs/midi/song016.o(.rodata);
+        sound/songs/song017.o(.rodata);
+        sound/songs/midi/song018.o(.rodata);
+        sound/songs/midi/song019.o(.rodata);
+        sound/songs/song020.o(.rodata);
+        sound/songs/midi/song021.o(.rodata);
+        sound/songs/midi/song022.o(.rodata);
+        sound/songs/midi/song023.o(.rodata);
+        sound/songs/midi/song024.o(.rodata);
+        sound/songs/midi/song025.o(.rodata);
+        sound/songs/midi/song026.o(.rodata);
+        sound/songs/midi/song027.o(.rodata);
+        sound/songs/midi/song028.o(.rodata);
+        sound/songs/midi/song029.o(.rodata);
+        sound/songs/song030.o(.rodata);
+        sound/songs/midi/song031.o(.rodata);
+        sound/songs/midi/song032.o(.rodata);
+        sound/songs/midi/song033.o(.rodata);
+        sound/songs/midi/song034.o(.rodata);
+        sound/songs/midi/song035.o(.rodata);
+        sound/songs/midi/song036.o(.rodata);
+        sound/songs/midi/song037.o(.rodata);
+        sound/songs/midi/song038.o(.rodata);
+        sound/songs/song039.o(.rodata);
+        sound/songs/song040.o(.rodata);
+        sound/songs/midi/song041.o(.rodata);
+        sound/songs/midi/song042.o(.rodata);
+        sound/songs/midi/mus_sp_stage_trick.o(.rodata);
+        sound/songs/midi/song044.o(.rodata);
+        sound/songs/midi/song045.o(.rodata);
+        sound/songs/midi/song046.o(.rodata);
+        sound/songs/midi/song047.o(.rodata);
+        sound/songs/midi/song048.o(.rodata);
+        sound/songs/midi/song049.o(.rodata);
+        sound/songs/midi/song050.o(.rodata);
+        sound/songs/midi/song051.o(.rodata);
+        sound/songs/midi/song052.o(.rodata);
+        sound/songs/midi/song053.o(.rodata);
+        sound/songs/midi/song054.o(.rodata);
+        sound/songs/midi/song102.o(.rodata);
+        sound/songs/midi/song103.o(.rodata);
+        sound/songs/midi/song104.o(.rodata);
+        sound/songs/midi/song105.o(.rodata);
+        sound/songs/midi/song106.o(.rodata);
+        sound/songs/midi/song107.o(.rodata);
+        sound/songs/midi/song108.o(.rodata);
+        sound/songs/midi/song109.o(.rodata);
+        sound/songs/midi/song110.o(.rodata);
+        sound/songs/midi/song111.o(.rodata);
+        sound/songs/midi/song112.o(.rodata);
+        sound/songs/midi/song113.o(.rodata);
+        sound/songs/midi/song114.o(.rodata);
+        sound/songs/midi/song115.o(.rodata);
+        sound/songs/midi/song116.o(.rodata);
+        sound/songs/midi/se_ring_copy.o(.rodata);
+        sound/songs/midi/song118.o(.rodata);
+        sound/songs/midi/song119.o(.rodata);
+        sound/songs/midi/song120.o(.rodata);
+        sound/songs/midi/song121.o(.rodata);
+        sound/songs/midi/song122.o(.rodata);
+        sound/songs/midi/song123.o(.rodata);
+        sound/songs/midi/song124.o(.rodata);
+        sound/songs/midi/song125.o(.rodata);
+        sound/songs/midi/song126.o(.rodata);
+        sound/songs/midi/song127.o(.rodata);
+        sound/songs/midi/song128.o(.rodata);
+        sound/songs/midi/song129.o(.rodata);
+        sound/songs/midi/song130.o(.rodata);
+        sound/songs/midi/song131.o(.rodata);
+        sound/songs/midi/song132.o(.rodata);
+        sound/songs/midi/song133.o(.rodata);
+        sound/songs/midi/song134.o(.rodata);
+        sound/songs/midi/song135.o(.rodata);
+        sound/songs/midi/song136.o(.rodata);
+        sound/songs/midi/song137.o(.rodata);
+        sound/songs/midi/song138.o(.rodata);
+        sound/songs/midi/song139.o(.rodata);
+        sound/songs/midi/song140.o(.rodata);
+        sound/songs/midi/song141.o(.rodata);
+        sound/songs/midi/song142.o(.rodata);
+        sound/songs/midi/song143.o(.rodata);
+        sound/songs/midi/song144.o(.rodata);
+        sound/songs/midi/song145.o(.rodata);
+        sound/songs/midi/song146.o(.rodata);
+        sound/songs/midi/song147.o(.rodata);
+        sound/songs/midi/song148.o(.rodata);
+        sound/songs/midi/song149.o(.rodata);
+        sound/songs/midi/song150.o(.rodata);
+        sound/songs/midi/song151.o(.rodata);
+        sound/songs/midi/song152.o(.rodata);
+        sound/songs/midi/song153.o(.rodata);
+        sound/songs/midi/song154.o(.rodata);
+        sound/songs/midi/song155.o(.rodata);
+        sound/songs/midi/song156.o(.rodata);
+        sound/songs/midi/song157.o(.rodata);
+        sound/songs/midi/song158.o(.rodata);
+        sound/songs/midi/song159.o(.rodata);
+        sound/songs/midi/song160.o(.rodata);
+        sound/songs/midi/song161.o(.rodata);
+        sound/songs/midi/song162.o(.rodata);
+        sound/songs/midi/song163.o(.rodata);
+        sound/songs/midi/song164.o(.rodata);
+        sound/songs/midi/song166.o(.rodata);
+        sound/songs/midi/song167.o(.rodata);
+        sound/songs/midi/song168.o(.rodata);
+        sound/songs/midi/song169.o(.rodata);
+        sound/songs/midi/song170.o(.rodata);
+        sound/songs/midi/song171.o(.rodata);
+        sound/songs/midi/song172.o(.rodata);
+        sound/songs/midi/song173.o(.rodata);
+        sound/songs/midi/song174.o(.rodata);
+        sound/songs/midi/song175.o(.rodata);
+        sound/songs/midi/song176.o(.rodata);
+        sound/songs/midi/song177.o(.rodata);
+        sound/songs/midi/song178.o(.rodata);
+        sound/songs/midi/song179.o(.rodata);
+        sound/songs/midi/song180.o(.rodata);
+        sound/songs/midi/song181.o(.rodata);
+        sound/songs/midi/song182.o(.rodata);
+        sound/songs/midi/song183.o(.rodata);
+        sound/songs/midi/song184.o(.rodata);
+        sound/songs/midi/song185.o(.rodata);
+        sound/songs/midi/song188.o(.rodata);
+        sound/songs/midi/song189.o(.rodata);
+        sound/songs/midi/song190.o(.rodata);
+        sound/songs/midi/song191.o(.rodata);
+        sound/songs/midi/song192.o(.rodata);
+        sound/songs/midi/song193.o(.rodata);
+        sound/songs/midi/song194.o(.rodata);
+        sound/songs/midi/song195.o(.rodata);
+        sound/songs/midi/song196.o(.rodata);
+        sound/songs/midi/song198.o(.rodata);
+        sound/songs/midi/song199.o(.rodata);
+        sound/songs/midi/song200.o(.rodata);
+        sound/songs/midi/song201.o(.rodata);
+        sound/songs/midi/song202.o(.rodata);
+        sound/songs/midi/song203.o(.rodata);
+        sound/songs/midi/song204.o(.rodata);
+        sound/songs/midi/song205.o(.rodata);
+        sound/songs/midi/song206.o(.rodata);
+        sound/songs/midi/song207.o(.rodata);
+        sound/songs/midi/song208.o(.rodata);
+        sound/songs/midi/song209.o(.rodata);
+        sound/songs/midi/song210.o(.rodata);
+        sound/songs/midi/song211.o(.rodata);
+        sound/songs/midi/song212.o(.rodata);
+        sound/songs/midi/song213.o(.rodata);
+        sound/songs/midi/song214.o(.rodata);
+        sound/songs/midi/song215.o(.rodata);
+        sound/songs/midi/song216.o(.rodata);
+        sound/songs/midi/song217.o(.rodata);
+        sound/songs/midi/song218.o(.rodata);
+        sound/songs/midi/song219.o(.rodata);
+        sound/songs/midi/song220.o(.rodata);
+        sound/songs/midi/song221.o(.rodata);
+        sound/songs/midi/song222.o(.rodata);
+        sound/songs/midi/song223.o(.rodata);
+        sound/songs/midi/song224.o(.rodata);
+        sound/songs/midi/song301.o(.rodata);
+        sound/songs/midi/song302.o(.rodata);
+        sound/songs/midi/song303.o(.rodata);
+        sound/songs/midi/song304.o(.rodata);
+        sound/songs/midi/song305.o(.rodata);
+        sound/songs/midi/song306.o(.rodata);
+        sound/songs/midi/song307.o(.rodata);
+        
+        src/lib/agb_flash/agb_flash.o(.rodata);
+        src/lib/agb_flash/agb_flash_le_512k.o(.rodata);
+        src/lib/agb_flash/agb_flash_mx_512k.o(.rodata);
+        src/lib/agb_flash/agb_flash_at_512k.o(.rodata);
+        data/data1.o(.rodata);
+        src/game/multiplayer/unk_0.o(.rodata);
+        data/data1_1.o(.rodata);
+        data/build_info.o(.rodata);
+    } = 0
+
+    . = 0x2000000;
+    EWRAM (NOLOAD) :
+    ALIGN(4) {
+        src/lib/m4a/m4a.o(ewram_data);
+        src/malloc_ewram.o(.bss);
+        ewram_end = .;
+
+        . = 0x00033000; gUnknown_02033000 = .;
+        . = 0x00033004; gUnknown_02033004 = .;
+        . = 0x00033008; gUnknown_02033008 = .;
+        . = 0x0003300C; gUnknown_0203300C = .;
+        . = 0x0003B000; gUnknown_0203B000 = .;
+        . = 0x0003F000; gUnknown_0203F000 = .;
+    }
+
+    . = 0x03000000;
+    IWRAM (NOLOAD) :
+    ALIGN(4)
+    {
+        INCLUDE "../../../sym_iwram.txt"
+    }
+
+    /* DWARF debug sections.
+       Symbols in the DWARF debugging sections are relative to the beginning
+       of the section so we begin them at 0.  */
+
+    /* DWARF 1 */
+    .debug          0 : { *(.debug) }
+    .line           0 : { *(.line) }
+
+    /* GNU DWARF 1 extensions */
+    .debug_srcinfo  0 : { *(.debug_srcinfo) }
+    .debug_sfnames  0 : { *(.debug_sfnames) }
+
+    /* DWARF 1.1 and DWARF 2 */
+    .debug_aranges  0 : { *(.debug_aranges) }
+    .debug_pubnames 0 : { *(.debug_pubnames) }
+
+    /* DWARF 2 */
+    .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+    .debug_abbrev   0 : { *(.debug_abbrev) }
+    .debug_line     0 : { *(.debug_line) }
+    .debug_frame    0 : { *(.debug_frame) }
+    .debug_str      0 : { *(.debug_str) }
+    .debug_loc      0 : { *(.debug_loc) }
+    .debug_macinfo  0 : { *(.debug_macinfo) }
+
+    /* Discard everything not specifically mentioned above. */
+    /DISCARD/ :
+    {
+        *(*);
+    }
+}
