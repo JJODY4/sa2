@@ -183,32 +183,32 @@ endif
 # TEMP SOLUTION UNTIL MAKEFILES ARE COMBINED
 # Moves any relevant sa2 c files to the build dir
 SA2_C_FILES := \
-	sa2/lib/m4a/m4a.c \
-	sa2/lib/m4a/m4a_tables.c \
-	sa2/multi_sio.c \
-	sa2/sio32_multi_load.c \
-	sa2/multi_boot.c \
-	sa2/core.c \
-	sa2/main.c \
-	sa2/task.c \
-	sa2/sprite.c \
-	sa2/trig.c \
-	sa2/malloc_vram.c \
-	sa2/malloc_ewram.c \
-	sa2/bg_triangles.c \
-	sa2/input_recorder.c \
-	sa2/background.c \
+	src/lib/m4a/m4a.c \
+	src/lib/m4a/m4a_tables.c \
+	src/multi_sio.c \
+	src/sio32_multi_load.c \
+	src/multi_boot.c \
+	src/core.c \
+	src/main.c \
+	src/task.c \
+	src/sprite.c \
+	src/trig.c \
+	src/malloc_vram.c \
+	src/malloc_ewram.c \
+	src/bg_triangles.c \
+	src/input_recorder.c \
+	src/background.c \
 
 SA2_C_ASM_FILES := \
-# 	sa2/rom_header.s \
-# 	sa2/lib/m4a/m4a0.s \
-# 	sa2/crt0.s \
-# 	sa2/multi_sio_asm.s
+	src/rom_header.s \
+	src/lib/m4a/m4a0.s \
+	src/crt0.s \
+	src/multi_sio_asm.s
 
-SA2_C_SRCS = $(patsubst sa2/%.c,$(C_BUILDDIR)/sa2/%.c,$(SA2_C_FILES))
+SA2_C_SRCS = $(patsubst %.c,$(OBJ_DIR)/sa2/%.c,$(SA2_C_FILES))
 SA2_C_OBJS = $(patsubst %.c,%.o,$(SA2_C_SRCS))
 
-SA2_C_ASM_SRCS = $(patsubst sa2/%.s,$(C_BUILDDIR)/sa2/%.s,$(SA2_C_ASM_FILES))
+SA2_C_ASM_SRCS = $(patsubst %.s,$(OBJ_DIR)/sa2/%.s,$(SA2_C_ASM_FILES))
 SA2_C_ASM_OBJS = $(patsubst %.s,%.o,$(SA2_C_ASM_SRCS))
 
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
@@ -389,8 +389,8 @@ endif
 ifeq ($(PLATFORM),gba)
 # Use the old compiler for m4a, as it was prebuilt and statically linked to the original codebase
 # PROLOGUE_FIX has to be set to nothing, since -fprologue-bugfix does not work with oldagbcc
-$(C_BUILDDIR)/sa2/lib/m4a/m4a.o: CC1 := $(CC1_OLD)
-$(C_BUILDDIR)/sa2/lib/m4a/m4a.o: PROLOGUE_FIX :=
+$(OBJ_DIR)/sa2/src/lib/m4a/m4a.o: CC1 := $(CC1_OLD)
+$(OBJ_DIR)/sa2/src/lib/m4a/m4a.o: PROLOGUE_FIX :=
 # Use `-O1` for agb_flash libs, as these were also prebuilt
 $(C_BUILDDIR)/lib/agb_flash/agb_flash.o:  CC1FLAGS := -O1 -mthumb-interwork -Werror
 $(C_BUILDDIR)/lib/agb_flash/agb_flash%.o: CC1FLAGS := -O1 -mthumb-interwork -Werror
@@ -449,7 +449,6 @@ win32: ; @$(MAKE) PLATFORM=win32 CPU_ARCH=i386
 include songs.mk
 include ../graphics.mk
 
-%.s: ;
 %.png: ;
 %.pal: ;
 
@@ -509,32 +508,32 @@ else
 endif
 
 # Copy files from SA2
-$(C_BUILDDIR)/sa2/%.c: ../src/%.c
+$(OBJ_DIR)/sa2/%.c: ../%.c
 	$(shell mkdir -p $(shell dirname '$@'))
 	cp $< $@
 
-$(C_BUILDDIR)/sa2/%.s: ../src/%.s
+$(OBJ_DIR)/sa2/%.s: ../%.s
 	$(shell mkdir -p $(shell dirname '$@'))
 	cp $< $@
 
 # TODO: remove once we are building sources from the same makefile
 # Build C and ASM sources from SA2
-$(C_BUILDDIR)/sa2/%.o: $(C_BUILDDIR)/sa2/%.c
+$(OBJ_DIR)/sa2/%.o: $(OBJ_DIR)/sa2/%.c
 	@echo "$(CC1) <flags> -o $@ $<"
-	@$(shell mkdir -p $(shell dirname '$(C_BUILDDIR)/sa2/$*.i'))
-	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/sa2/$*.i
-	@$(PREPROC) $(C_BUILDDIR)/sa2/$*.i $(PLATFORM) "" | $(CC1) $(PROLOGUE_FIX) $(CC1FLAGS) -o $(C_BUILDDIR)/sa2/$*.s -
-	@printf ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/sa2/$*.s
-	@$(AS) $(ASFLAGS) $(C_BUILDDIR)/sa2/$*.s -o $@
+	@$(shell mkdir -p $(shell dirname '$(OBJ_DIR)/sa2/$*.i'))
+	@$(CPP) $(CPPFLAGS) $< -o $(OBJ_DIR)/sa2/$*.i
+	@$(PREPROC) $(OBJ_DIR)/sa2/$*.i $(PLATFORM) "" | $(CC1) $(PROLOGUE_FIX) $(CC1FLAGS) -o $(OBJ_DIR)/sa2/$*.s -
+	@printf ".text\n\t.align\t2, 0\n" >> $(OBJ_DIR)/sa2/$*.s
+	@$(AS) $(ASFLAGS) $(OBJ_DIR)/sa2/$*.s -o $@
 
-$(C_BUILDDIR)/sa2/%.d: $(C_BUILDDIR)/sa2/%.c
-	@$(shell mkdir -p $(shell dirname '$(C_BUILDDIR)/sa2/$*.d'))
+$(OBJ_DIR)/sa2/%.d: $(OBJ_DIR)/sa2/%.c
+	@$(shell mkdir -p $(shell dirname '$(OBJ_DIR)/sa2/$*.d'))
 	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) $<
 
-$(C_BUILDDIR)/sa2/%.o: $(C_BUILDDIR)/sa2/%.s
+$(OBJ_DIR)/sa2/%.o: $(OBJ_DIR)/sa2/%.s
 	@echo "$(AS) <flags> -o $@ $<"
-	@$(shell mkdir -p $(shell dirname '$(C_BUILDDIR)/$*.s'))
-	@$(AS) $(ASFLAGS) -I -o $@ $<
+	@$(shell mkdir -p $(shell dirname '$(OBJ_DIR)/$*.s'))
+	@$(AS) $(ASFLAGS) -o $@ $<
 
 # Build c sources, and ensure alignment
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.c

@@ -7,21 +7,21 @@ SECTIONS {
     ROM :
     ALIGN(4) {
         /* Engine */
-        src/rom_header.o(.text);
-        src/crt0.o(.text);
-        src/multi_sio_asm.o(.text);
+        sa2/src/rom_header.o(.text);
+        sa2/src/crt0.o(.text);
+        sa2/src/multi_sio_asm.o(.text);
         data/rom_header_old.o(.text);
-        src/sa2/core.o(.text);
-        src/sa2/main.o(.text);
-        src/sa2/task.o(.text);
-        src/sa2/background.o(.text);
-        src/sa2/sprite.o(.text);
-        src/sa2/bg_triangles.o(.text);
-        src/sa2/malloc_ewram.o(.text);
-        src/sa2/malloc_vram.o(.text);
-        src/sa2/multi_sio.o(.text);
-        src/sa2/multi_boot.o(.text);
-        src/sa2/sio32_multi_load.o(.text);
+        sa2/src/core.o(.text);
+        sa2/src/main.o(.text);
+        sa2/src/task.o(.text);
+        sa2/src/background.o(.text);
+        sa2/src/sprite.o(.text);
+        sa2/src/bg_triangles.o(.text);
+        sa2/src/malloc_ewram.o(.text);
+        sa2/src/malloc_vram.o(.text);
+        sa2/src/multi_sio.o(.text);
+        sa2/src/multi_boot.o(.text);
+        sa2/src/sio32_multi_load.o(.text);
 
         /* Game */
         src/game/sa1_sa2_shared/rings_manager.o(.text);
@@ -128,7 +128,7 @@ SECTIONS {
         src/game/stage/underwater_effects.o(.text);
         src/game/water_effects.o(.text);
         src/game/stage/screen_shake.o(.text);
-        src/sa2/input_recorder.o(.text);
+        sa2/src/input_recorder.o(.text);
         src/game/some_task_manager.o(.text);
         src/game/interactables/half_pipe.o(.text);
         src/game/interactables/034.o(.text);
@@ -245,8 +245,8 @@ SECTIONS {
         src/game/interactables/113.o(.text);
 
         /* Libs */
-        src/lib/m4a/m4a0.o(.text);
-        src/sa2/lib/m4a/m4a.o(.text);
+        sa2/src/lib/m4a/m4a0.o(.text);
+        sa2/src/lib/m4a/m4a.o(.text);
         src/lib/agb_flash/agb_flash.o(.text);
         src/lib/agb_flash/agb_flash_le_512k.o(.text);
         src/lib/agb_flash/agb_flash_mx_512k.o(.text);
@@ -283,13 +283,13 @@ SECTIONS {
     
     /* Data */
 
-        src/sa2/core.o(.rodata);
-        src/sa2/background.o(.rodata);
-        src/sa2/trig.o(.rodata);
-        src/sa2/sprite.o(.rodata);
-        src/sa2/bg_triangles.o(.rodata);
-        src/sa2/multi_sio.o(.rodata);
-        src/sa2/sio32_multi_load.o(.rodata);
+        sa2/src/core.o(.rodata);
+        sa2/src/background.o(.rodata);
+        sa2/src/trig.o(.rodata);
+        sa2/src/sprite.o(.rodata);
+        sa2/src/bg_triangles.o(.rodata);
+        sa2/src/multi_sio.o(.rodata);
+        sa2/src/sio32_multi_load.o(.rodata);
         src/data/tileset_debug_ascii.o(.rodata);
         src/game/save.o(.rodata);
         data/chao_garden.o(.rodata);
@@ -376,7 +376,7 @@ SECTIONS {
         src/game/interactables/spiked_barrel.o(.rodata);
         src/game/interactables/air_bubbles.o(.rodata);
         src/data/entities.o(.rodata);
-        src/sa2/lib/m4a/m4a_tables.o(.rodata);
+        sa2/src/lib/m4a/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
         sound/songs/song001.o(.rodata);
         sound/songs/midi/song002.o(.rodata);
@@ -572,8 +572,8 @@ SECTIONS {
     . = 0x2000000;
     EWRAM (NOLOAD) :
     ALIGN(4) {
-        src/sa2/lib/m4a/m4a.o(ewram_data);
-        src/sa2/malloc_ewram.o(ewram_data);
+        sa2/src/lib/m4a/m4a.o(ewram_data);
+        sa2/src/malloc_ewram.o(ewram_data);
         ewram_end = .;
 
         . = 0x00033000; gUnknown_02033000 = .;
