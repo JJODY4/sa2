@@ -6,7 +6,7 @@
 #include "game/stage/screen_fade.h"
 #include "lib/m4a/m4a.h"
 #include "constants/songs.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "malloc_vram.h"
 #include "game/multiboot/connection.h"
 #include "game/title_screen.h"

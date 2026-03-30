@@ -12,7 +12,7 @@
 #include "game/sa1_sa2_shared/collision.h"
 #include "game/sa1_sa2_shared/music_manager.h"
 #include "game/sa1_sa2_shared/player.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/some_task_manager.h"
 #include "game/stage/camera.h"
 #include "game/stage/terrain_collision.h"

@@ -8,7 +8,7 @@
 #include "game/sa1_sa2_shared/palette_loader.h"
 #include "game/sa1_sa2_shared/pause_menu.h"
 #include "game/sa1_sa2_shared/player.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/special_stage/main.h"
 #include "game/stage/player_controls.h"
 #include "game/stage/terrain_collision.h"

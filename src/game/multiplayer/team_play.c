@@ -1,6 +1,6 @@
 #include "global.h"
 #include "game/multiplayer/team_play.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "core.h"
 #include "task.h"
 #include "sprite.h"

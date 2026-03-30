@@ -7,7 +7,7 @@
 #include "game/sa1_sa2_shared/palette_loader.h"
 #include "game/sa1_sa2_shared/pause_menu.h"
 #include "game/sa1_sa2_shared/rings_manager.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/game_over.h"
 #include "game/cheese.h"
 #include "game/stage/player_controls.h"

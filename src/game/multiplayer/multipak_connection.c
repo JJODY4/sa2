@@ -9,7 +9,7 @@
 #include "game/multiplayer/mode_select.h"
 
 #include "data/sprite_data.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/title_screen.h"
 
 #include "game/stage/screen_fade.h"

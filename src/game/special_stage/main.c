@@ -9,7 +9,7 @@
 #include "game/special_stage/physics.h"
 #include "game/special_stage/tables.h"
 #include "game/stage/stage.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "sprite.h"
 #include "game/stage/screen_fade.h"
 #include "lib/m4a/m4a.h"

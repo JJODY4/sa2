@@ -4,7 +4,7 @@
 #include "game/stage/stage.h"
 #include "sprite.h"
 #include "game/character_select.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "lib/m4a/m4a.h"
 #include "task.h"
 #include "malloc_vram.h"

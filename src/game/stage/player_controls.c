@@ -1,6 +1,6 @@
 #include "global.h"
 #include "game/stage/player_controls.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 
 struct ButtonConfig gPlayerControls = {};
 

@@ -9,7 +9,7 @@
 #include "game/multiplayer/results.h"
 #include "game/multiplayer/multipak_connection.h"
 #include "game/multiplayer_lobby.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 
 #ifdef TEAMPLAY_AVAILABLE
 #include "game/multiplayer/team_play.h"

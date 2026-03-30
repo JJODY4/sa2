@@ -6,7 +6,7 @@
 #include "game/course_select.h"
 #include "game/multiplayer/multipak_connection.h"
 #include "game/sa1_sa2_shared/globals.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 
 #include "constants/animations.h"
 #include "constants/songs.h"

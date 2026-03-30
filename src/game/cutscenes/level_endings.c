@@ -8,7 +8,7 @@
 #include "lib/m4a/m4a.h"
 #include "trig.h"
 #include "game/course_select.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 
 #include "game/stage/terrain_collision.h"
 #include "game/stage/player.h"

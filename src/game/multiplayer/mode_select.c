@@ -10,7 +10,7 @@
 #include "game/multiplayer/mode_select.h"
 #include "game/multiplayer/multipak_connection.h"
 #include "game/multiboot/connection.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/stage/screen_fade.h"
 #include "game/stage/boss_results_transition.h"
 #include "game/title_screen.h"

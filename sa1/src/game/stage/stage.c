@@ -17,7 +17,7 @@
 #include "game/sa1_sa2_shared/rings_manager.h"
 #include "game/sa1_sa2_shared/spot_light_beam_task.h"
 #include "game/parameters/stage.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/stage/camera.h"
 #include "game/stage/player.h"
 #include "game/stage/screen_shake.h"

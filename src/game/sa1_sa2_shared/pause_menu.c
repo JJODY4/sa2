@@ -6,7 +6,7 @@
 
 #include "game/sa1_sa2_shared/globals.h"
 
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/time_attack/lobby.h"
 #include "game/title_screen.h"
 #include "game/water_effects.h"
@@ -174,7 +174,7 @@ void Task_PauseMenuInit(void)
     u32 i;
 
     for (i = 0; i < 4; i++) {
-        if (i != gSongTable[142].ms) {
+        if (i != gSongTable[SE_PAUSE_SCREEN].ms) {
             MPlayStop(gMPlayTable[i].info);
         }
     }

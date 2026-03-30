@@ -8,7 +8,7 @@
 #include "game/gTask_03006240.h"
 #include "game/multiplayer/multipak_connection.h"
 #include "game/sa1_sa2_shared/globals.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/title_screen.h"
 
 #include "constants/animations.h"

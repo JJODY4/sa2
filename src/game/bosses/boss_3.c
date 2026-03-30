@@ -14,7 +14,7 @@
 
 #include "game/stage/terrain_collision.h"
 #include "game/stage/player.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/stage/screen_shake.h"
 
 #include "constants/animations.h"

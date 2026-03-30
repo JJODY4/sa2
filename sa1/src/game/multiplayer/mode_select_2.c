@@ -12,7 +12,7 @@
 #include "game/sa1_sa2_shared/globals.h"
 #include "game/sa1_sa2_shared/camera.h"
 #include "game/sa1_sa2_shared/player.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/stage/player_controls.h"
 #include "game/stage/rings_scatter.h"
 #include "game/stage/stage.h"

@@ -8,7 +8,7 @@
 #include "game/enemies/bosses_shared.h" // CreatePreBossCameraPan
 #include "game/nuts_and_bolts_task.h"
 #include "game/sa1_sa2_shared/collision.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/stage/dust_effect_braking.h"
 #include "game/stage/extra_stage.h"
 #include "game/stage/player.h" // sub_804A8A8

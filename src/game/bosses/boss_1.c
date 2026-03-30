@@ -9,7 +9,7 @@
 #include "game/sa1_sa2_shared/collision.h"
 
 #include "game/player_callbacks.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/cheese.h"
 #include "game/bosses/boss_1.h"
 #include "game/bosses/common.h"

@@ -7,7 +7,7 @@
 #include "lib/m4a/m4a.h"
 #include "game/character_select.h"
 #include "game/stage/boss_results_transition.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/time_attack/mode_select.h"
 #include "game/stage/screen_fade.h"
 #include "game/title_screen.h"

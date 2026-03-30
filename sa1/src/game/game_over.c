@@ -11,7 +11,7 @@
 #if DEBUG
 #include "game/sa1_sa2_shared/unused_level_select.h"
 #endif
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/stage/stage.h"
 #include "game/stage/ui.h"
 #include "game/title_screen.h"

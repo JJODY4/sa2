@@ -16,7 +16,7 @@
 #include "game/multiplayer/mode_select.h"
 #include "game/options_screen.h"
 #include "game/sa1_sa2_shared/demo_manager.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/stage/stage.h"
 #include "game/stage/screen_fade.h"
 #include "game/time_attack/lobby.h"

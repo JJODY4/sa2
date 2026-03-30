@@ -1,7 +1,7 @@
 #include "game/time_attack/lobby.h"
 #include "core.h"
 #include "sprite.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/stage/screen_fade.h"
 #include "game/stage/stage.h"
 #include "malloc_vram.h"

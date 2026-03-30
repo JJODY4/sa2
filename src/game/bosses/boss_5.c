@@ -6,7 +6,7 @@
 
 #include "game/sa1_sa2_shared/collision.h"
 
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/bosses/common.h"
 #include "game/bosses/eggmobile_escape_sequence.h"
 #include "game/stage/boss_results_transition.h"

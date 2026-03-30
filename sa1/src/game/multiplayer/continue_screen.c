@@ -6,7 +6,7 @@
 #include "game/sa1_sa2_shared/globals.h"
 #include "game/multiplayer/multipak_connection.h"
 #include "game/multiplayer/results.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 #include "game/stage/ui.h"
 
 #include "constants/text.h"

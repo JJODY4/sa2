@@ -3,7 +3,7 @@
 #include "flags.h"
 #include "trig.h"
 #include "malloc_vram.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 
 #include "game/stage/player.h"
 #include "game/stage/ui.h"

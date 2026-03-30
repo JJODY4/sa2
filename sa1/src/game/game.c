@@ -4,7 +4,7 @@
 #include "task.h"
 
 #include "game/game.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 
 #include "game/title_screen.h"
 #include "game/options_screen.h"

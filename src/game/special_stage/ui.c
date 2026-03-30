@@ -1,6 +1,6 @@
 #include "core.h"
 #include "lib/m4a/m4a.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/special_stage/main.h"
 #include "game/special_stage/player.h"
 #include "game/special_stage/ui.h"

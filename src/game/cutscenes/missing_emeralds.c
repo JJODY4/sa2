@@ -5,7 +5,7 @@
 #include "sprite.h"
 #include "task.h"
 #include "lib/m4a/m4a.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/title_screen.h"
 
 #include "constants/animations.h"

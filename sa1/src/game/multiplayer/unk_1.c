@@ -13,7 +13,7 @@
 #include "game/sa1_sa2_shared/globals.h"
 #include "game/stage/player.h"
 #include "game/stage/stage.h"
-#include "game/save.h"
+#include "game/sa1/save.h"
 
 #include "constants/songs.h"
 #include "constants/tilemaps.h"

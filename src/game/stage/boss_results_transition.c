@@ -4,7 +4,7 @@
 #include "task.h"
 #include "lib/m4a/m4a.h"
 #include "game/cheese.h"
-#include "game/save.h"
+#include "game/sa2/save.h"
 #include "game/stage/player.h"
 #include "game/stage/camera.h"
 #include "game/cutscenes/level_endings.h"
