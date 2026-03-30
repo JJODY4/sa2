@@ -5,7 +5,7 @@
 #include "game/multiplayer/multiplayer_event_mgr.h"
 
 #if (GAME == GAME_SA1)
-u8 sa2__gUnknown_030053E0 = 0;
+u8 gSpikesUnknownTimer = 0;
 #elif (GAME == GAME_SA2)
 u8 gUnknown_030053E0 = 0;
 #endif
@@ -51,12 +51,12 @@ u16 ALIGNED(4) gBossCameraClampYLower = 0;
 #endif
 s8 ALIGNED(4) gTrappedAnimalVariant = 0;
 #if (GAME == GAME_SA1)
-u8 ALIGNED(4) sa2__gUnknown_030054B0 = 0;
+u8 ALIGNED(4) SA2_LABEL(gUnknown_030054B0) = 0;
 #endif
 
 u8 ALIGNED(4) gNumLives = 0;
 u16 ALIGNED(4) gUnknown_03005028 = 0; // Special Stage-related
-u16 ALIGNED(4) sa2__gUnknown_0300544C = 0;
+u16 ALIGNED(4) gPrevStageFlags = 0;
 s32 gLevelScore = 0;
 
 #if (GAME == GAME_SA2)
@@ -74,7 +74,7 @@ MusicManagerState ALIGNED(8) gMusicManagerState = {};
 u8 gUnknown_030054B0 = 0;
 #endif
 s8 ALIGNED(4) gMultiplayerRanks[MULTI_SIO_PLAYERS_MAX] = {};
-u8 ALIGNED(4) sa2__gUnknown_030054B8 = 0;
+u8 ALIGNED(4) gOamMatrixIndex = 0;
 
 #if (GAME == GAME_SA1)
 s8 ALIGNED(4) gTailsEnabled = 0;

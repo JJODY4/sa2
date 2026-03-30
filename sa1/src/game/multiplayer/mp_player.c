@@ -524,7 +524,7 @@ block_57:
     }
     if (1 & mpp->unk54) {
         s->frameFlags &= ~0x1F;
-        s->frameFlags |= (SA2_LABEL(gUnknown_030054B8)++ | 0x20);
+        s->frameFlags |= (gOamMatrixIndex++ | 0x20);
         if (2 & mpp->unk54) {
             tf->qScaleX = -Q(1.0);
         } else {

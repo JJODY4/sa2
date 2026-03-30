@@ -206,7 +206,7 @@ void ReceiveRoomEvent_ItemEffect(union MultiSioData *recv, u8 i)
 
             case 3: {
 #if (GAME == GAME_SA1)
-                sa2__gUnknown_030053E0 = 30;
+                gSpikesUnknownTimer = 30;
 #else
                 if (IS_MP_OR_TEAM_PLAY
                     || ((gMultiplayerConnections & (0x10 << (i))) >> ((i + 4))

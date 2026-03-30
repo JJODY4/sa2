@@ -52,7 +52,7 @@ void GameInit(void)
     gBgOffsetsSecondary = gBgOffsetsBuffer[1];
 #endif
 
-    gStageFlags = sa2__gUnknown_0300544C = STAGE_FLAG__CLEAR;
+    gStageFlags = gPrevStageFlags = STAGE_FLAG__CLEAR;
 
 #if (GAME == GAME_SA1)
     // "Cheat Code" Tails
@@ -72,7 +72,7 @@ void GameInit(void)
     gDustEffectBrakingTask.t = NULL;
     gWater.t = NULL;
 
-    sa2__gUnknown_0300543C = 0;
+    SA2_LABEL(gUnknown_0300543C) = 0;
     gGameMode = GAME_MODE_SINGLE_PLAYER;
     gEntitiesManagerTask = NULL;
     gSmallAirBubbleCount = 0;

@@ -60,7 +60,7 @@ void Task_DrowningCountdown(void)
     ts->unk10 += 1;
 
     s->frameFlags = SPRITE_FLAG(PRIORITY, 2);
-    s->frameFlags |= (sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (gOamMatrixIndex++ | 0x20);
 
     UpdateSpriteAnimation(s);
     TransformSprite(s, transform);
@@ -221,7 +221,7 @@ static void Task_SpawnAirBubbles(void)
         ts->unk10 += 1;
         s->frameFlags = SPRITE_FLAG(PRIORITY, 2);
 
-        s->frameFlags |= (sa2__gUnknown_030054B8++ | 0x20);
+        s->frameFlags |= (gOamMatrixIndex++ | 0x20);
 
         UpdateSpriteAnimation(s);
         TransformSprite(s, transform);

@@ -79,7 +79,7 @@ void sub_804CDF8(void)
 
     s->frameFlags &= ~SPRITE_FLAG_MASK_ROT_SCALE;
 
-    s->frameFlags |= SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+    s->frameFlags |= SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
 
     UpdateSpriteAnimation(s);
     TransformSprite(s, transform);

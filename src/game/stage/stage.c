@@ -391,12 +391,12 @@ void Task_GameStage(void)
             gCamera.spectatorTarget = sioId;
         }
 
-        if (SA2_LABEL(gSpikesUnknownTimer) > 0) {
-            SA2_LABEL(gSpikesUnknownTimer)--;
+        if (gSpikesUnknownTimer > 0) {
+            gSpikesUnknownTimer--;
         }
     }
 
-    SA2_LABEL(gPrevStageFlags) = gStageFlags;
+    gPrevStageFlags = gStageFlags;
 
     if (gStageFlags & STAGE_FLAG__ACT_START) {
         return;

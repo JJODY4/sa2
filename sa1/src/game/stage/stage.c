@@ -178,7 +178,7 @@ void CreateGameStage(void)
         someTask = sub_80550F8();
     }
 
-    SA2_LABEL(gUnknown_030053E0) = 0;
+    gSpikesUnknownTimer = 0;
 
     if (gGameMode == GAME_MODE_MULTI_PLAYER_COLLECT_RINGS) {
         CreateChaoHuntHUD();
@@ -235,7 +235,7 @@ void CreateGameStage(void)
         StageInit_MPCollectRings();
     }
 #elif (GAME == GAME_SA2)
-    SA2_LABEL(gUnknown_030053E0) = 0;
+    gSpikesUnknownTimer = 0;
 
     if (!IS_EXTRA_STAGE(gCurrentLevel)) {
         sub_80213C0(gSelectedCharacter, gCurrentLevel, &gPlayer);
@@ -436,12 +436,12 @@ void Task_GameStage(void)
             gCamera.spectatorTarget = sioId;
         }
 
-        if (SA2_LABEL(gUnknown_030053E0) > 0) {
-            SA2_LABEL(gUnknown_030053E0)--;
+        if (gSpikesUnknownTimer > 0) {
+            gSpikesUnknownTimer--;
         }
     }
 
-    SA2_LABEL(gUnknown_0300544C) = gStageFlags;
+    gPrevStageFlags = gStageFlags;
 
     if (gStageFlags & STAGE_FLAG__ACT_START) {
         return;

@@ -52,5 +52,5 @@ void Task_CallUpdateCamera(void)
 static void Task_CallUpdateCameraInternal(void)
 {
     UpdateCamera();
-    sa2__gUnknown_030054B8 = 0x4;
+    gOamMatrixIndex = 0x4;
 }

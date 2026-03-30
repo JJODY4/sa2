@@ -357,8 +357,8 @@ void Task_8056218(void)
     if (frames >= 217) {
         s16 r0;
         u16 r1;
-        s2->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
-        s->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+        s2->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
+        s->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
 
         r1 = frames - 248;
         r0 = (32 - (r1));
@@ -421,7 +421,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_8056348.inc", void Task_8056348(
     r2 = r0 << 12;
 #endif
 
-    s->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+    s->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
     s->frameFlags |= SPRITE_FLAG(OBJ_MODE, 1);
 
     transform.rotation = 0;
@@ -435,7 +435,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_8056348.inc", void Task_8056348(
     transform.y = 60;
     TransformSprite(s, &transform);
 
-    s2->frameFlags = 0x20 | SA2_LABEL(gUnknown_030054B8)++;
+    s2->frameFlags = 0x20 | gOamMatrixIndex++;
     s2->frameFlags |= 0x80;
     transform.rotation = 0;
     transform.qScaleX = COS_24_8(r2 >> 16);
@@ -484,7 +484,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_805648C.inc", void Task_805648C(
         r1 = ((frames) - (136));
         r0 = (256 - r1);
 
-        s->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+        s->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
         s->frameFlags |= SPRITE_FLAG(OBJ_MODE, 1);
 
         transform.rotation = 0;
@@ -500,7 +500,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_805648C.inc", void Task_805648C(
         transform.y = 60;
         TransformSprite(s, &transform);
 
-        s2->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+        s2->frameFlags = SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
         s2->frameFlags |= SPRITE_FLAG(OBJ_MODE, 1);
 
         transform.rotation = 0;
@@ -553,8 +553,8 @@ void Task_80565C4(void)
     screen->frames = ++frames;
 
     if (frames >= 1433) {
-        s2->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
-        s->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | SA2_LABEL(gUnknown_030054B8)++;
+        s2->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
+        s->frameFlags = SPRITE_FLAG(OBJ_MODE, 1) | SPRITE_FLAG(ROT_SCALE_ENABLE, 1) | gOamMatrixIndex++;
 
         r1 = frames - 1464;
 
@@ -654,7 +654,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_805676C.inc", void Task_805676C(
             sp00.unk0 = 256;
             sp00.unk2 = 256;
             sp00.unk4 = 0;
-            sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+            sp00.unk6 = gOamMatrixIndex++;
             sub_8052C84((const char *)&*ptrArr, &sp00);
         }
     } else if (temp > 20) {
@@ -662,7 +662,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_805676C.inc", void Task_805676C(
         sp00.unk0 = 497 - temp * 4;
         sp00.unk2 = sp00.unk0;
         sp00.unk4 = 0;
-        sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+        sp00.unk6 = gOamMatrixIndex++;
         sp00.unkA = 104;
         sp00.unkC = 83;
         sub_8052C84((const char *)&*ptrArr, &sp00);
@@ -673,7 +673,7 @@ NONMATCH("asm/non_matching/game/game_over__Task_805676C.inc", void Task_805676C(
             sp00.unk0 = 256;
             sp00.unk2 = 256;
             sp00.unk4 = 0;
-            sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+            sp00.unk6 = gOamMatrixIndex++;
             sub_8052C84((const char *)arr, &sp00);
         }
     }
@@ -744,7 +744,7 @@ void Task_8056970(void)
             sp00.unk0 = 256;
             sp00.unk2 = 256;
             sp00.unk4 = 0;
-            sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+            sp00.unk6 = gOamMatrixIndex++;
             sub_8052C84((const char *)&*ptrArr, &sp00);
         }
     } else if (temp > 20) {
@@ -752,7 +752,7 @@ void Task_8056970(void)
         sp00.unk0 = 497 - temp * 4;
         sp00.unk2 = sp00.unk0;
         sp00.unk4 = 0;
-        sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+        sp00.unk6 = gOamMatrixIndex++;
         sp00.unkA = 88;
         sp00.unkC = 68;
         sub_8052C84((const char *)&*ptrArr, &sp00);
@@ -763,7 +763,7 @@ void Task_8056970(void)
             sp00.unk0 = 256;
             sp00.unk2 = 256;
             sp00.unk4 = 0;
-            sp00.unk6 = SA2_LABEL(gUnknown_030054B8)++;
+            sp00.unk6 = gOamMatrixIndex++;
             sub_8052C84((const char *)arr, &sp00);
         }
     }

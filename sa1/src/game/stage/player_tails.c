@@ -278,7 +278,7 @@ void Task_8047D04(void)
 
     s->frameFlags |= p->spriteInfoLimbs->s.frameFlags & 0x3000;
     s->frameFlags &= ~SPRITE_FLAG_MASK_ROT_SCALE;
-    s->frameFlags |= SA2_LABEL(gUnknown_030054B8)++ | SPRITE_FLAG_MASK_ROT_SCALE_ENABLE;
+    s->frameFlags |= gOamMatrixIndex++ | SPRITE_FLAG_MASK_ROT_SCALE_ENABLE;
 
     tf->rotation = (u8)p->w.tf.shift * 4;
     tf->qScaleX = Q(1.0);

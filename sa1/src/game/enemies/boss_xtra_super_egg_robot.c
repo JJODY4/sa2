@@ -658,7 +658,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8050A88.inc", void sub_80
     tf->y = sp8;
     tf->rotation = (strc->unk70 >> 6);
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -761,7 +761,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8050FB4.inc", void sub_80
     tf->x = screenX;
     tf->y = screenY;
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -885,7 +885,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8051344.inc", void sub_80
     tf->x = screenX;
     tf->y = screenY;
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -1000,7 +1000,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8051604.inc", void sub_80
     tf->y = screenY;
     tf->y = ((((u32)strc->unk70 - Q(64)) << 16) >> 22);
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -1093,7 +1093,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_80519E8.inc", void sub_80
     tf->y = screenY;
     tf->rotation = strc->unk70 >> 6;
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -1166,7 +1166,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8051C44.inc", void sub_80
     tf->y = screenY;
     tf->rotation = strc->unk70 >> 6;
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
@@ -1218,7 +1218,7 @@ NONMATCH("asm/non_matching/game/enemies/boss_xtra__sub_8051E38.inc", void sub_80
     tf->y = screenY;
     tf->rotation = strc->unk70 >> 6;
     s->frameFlags &= ~0x1F;
-    s->frameFlags |= (u8)(sa2__gUnknown_030054B8++ | 0x20);
+    s->frameFlags |= (u8)(gOamMatrixIndex++ | 0x20);
     UpdateSpriteAnimation(s);
     TransformSprite(s, tf);
     DisplaySprite(s);
