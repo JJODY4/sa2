@@ -103,7 +103,7 @@ u16 ALIGNED(4) gSpecialStageReturnY = 0;
 #elif (GAME == GAME_SA2)
 u8 ALIGNED(4) gMultiplayerUnlockedLevels = 0;
 #endif
-struct ALIGNED(4) Task *gEntitiesManagerTask = NULL;
+struct Task *ALIGNED(4) gEntitiesManagerTask = NULL;
 
 #if (GAME == GAME_SA2)
 s32 ALIGNED(4) gWorldSpeedY = 0;
