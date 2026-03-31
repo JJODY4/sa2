@@ -62,7 +62,7 @@ SECTIONS
         src/game/stage/debug_text_printer.o(.data);
         src/game/bosses/common.o(.data);
         src/game/options_screen.o(.data);
-        src/game/special_stage/utils.o(.data);
+        src/game/sa2/special_stage/utils.o(.data);
         src/game/sa2/save.o(.data);
         src/game/multiboot/collect_rings/time_display.o(.data);
         src/game/math.o(.data);
@@ -237,14 +237,14 @@ SECTIONS
 
         src/game/options_screen.o(.text);
 
-        src/game/special_stage/main.o(.text);
-        src/game/special_stage/utils.o(.text);
-        src/game/special_stage/player.o(.text);
-        src/game/special_stage/collectables.o(.text);
-        src/game/special_stage/world.o(.text);
-        src/game/special_stage/physics.o(.text);
-        src/game/special_stage/ui.o(.text);
-        src/game/special_stage/guard_robo.o(.text);
+        src/game/sa2/special_stage/main.o(.text);
+        src/game/sa2/special_stage/utils.o(.text);
+        src/game/sa2/special_stage/player.o(.text);
+        src/game/sa2/special_stage/collectables.o(.text);
+        src/game/sa2/special_stage/world.o(.text);
+        src/game/sa2/special_stage/physics.o(.text);
+        src/game/sa2/special_stage/ui.o(.text);
+        src/game/sa2/special_stage/guard_robo.o(.text);
 
         src/game/sa2/save.o(.text);
 
@@ -450,14 +450,14 @@ SECTIONS
         src/game/interactables_1/checkpoint.o(.rodata);
         src/game/interactables_1/windmill.o(.rodata);
         src/game/options_screen.o(.rodata);
-        src/game/special_stage/data.o(.rodata);
-        src/game/special_stage/player.o(.rodata);
-        src/game/special_stage/collectables.o(.rodata);
-        src/game/special_stage/world.o(.rodata);
-        src/game/special_stage/physics.o(.rodata);
-        src/game/special_stage/ui.o(.rodata);
-        src/game/special_stage/guard_robo.o(.rodata);
-        src/game/special_stage/tables.o(.rodata);
+        src/game/sa2/special_stage/data.o(.rodata);
+        src/game/sa2/special_stage/player.o(.rodata);
+        src/game/sa2/special_stage/collectables.o(.rodata);
+        src/game/sa2/special_stage/world.o(.rodata);
+        src/game/sa2/special_stage/physics.o(.rodata);
+        src/game/sa2/special_stage/ui.o(.rodata);
+        src/game/sa2/special_stage/guard_robo.o(.rodata);
+        src/game/sa2/special_stage/tables.o(.rodata);
         src/game/interactables_2/hot_crater/dash_ring.o(.rodata);
         src/game/interactables_2/music_plant/note_sphere.o(.rodata);
         src/game/interactables_2/music_plant/note_block.o(.rodata);
