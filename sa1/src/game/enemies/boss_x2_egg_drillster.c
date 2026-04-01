@@ -5,7 +5,7 @@
 #include "lib/m4a/m4a.h"
 #include "game/types/entity.h"
 #include "game/enemies/bosses_shared.h" // CreatePreBossCameraPan
-#include "game/nuts_and_bolts_task.h"
+#include "game/stage/nuts_and_bolts_task.h"
 #include "game/shared/stage/collision.h"
 #include "game/shared/stage/terrain_collision.h"
 

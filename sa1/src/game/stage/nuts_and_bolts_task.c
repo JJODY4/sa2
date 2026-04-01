@@ -2,7 +2,7 @@
 #include "core.h"
 #include "game/types/entity.h"
 #include "malloc_vram.h"
-#include "game/nuts_and_bolts_task.h"
+#include "game/stage/nuts_and_bolts_task.h"
 
 struct Task *CreateNutsAndBoltsTask(u16 taskFlags, void *vramTiles, u16 anim, u8 variant, TaskDestructor dtor)
 {

@@ -5,7 +5,7 @@
 #include "flags.h"
 #include "malloc_vram.h"
 #include "bg_triangles.h"
-#include "game/nuts_and_bolts_task.h"
+#include "game/stage/nuts_and_bolts_task.h"
 #include "game/globals.h"
 #include "game/types/camera.h"
 #include "game/shared/stage/player.h"

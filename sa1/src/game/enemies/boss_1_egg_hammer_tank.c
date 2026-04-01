@@ -6,7 +6,7 @@
 #include "game/types/player.h"
 #include "game/types/entity.h"
 #include "game/enemies/bosses_shared.h"
-#include "game/nuts_and_bolts_task.h"
+#include "game/stage/nuts_and_bolts_task.h"
 #include "game/sa1/save.h"
 #include "game/sa1/stage/player_controls.h"
 #include "game/shared/stage/screen_shake.h"

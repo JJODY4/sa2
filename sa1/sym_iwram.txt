@@ -36,7 +36,7 @@ src/game/sa1/special_stage/main.o(.data);
 . = 0x000056F0; gUnknown_030056F0 = .;
 
 . = 0x00005730;
-src/game/sa1/special_stage/temporary_sound_play_task.o(.data);
+src/game/sa1/stage/temporary_sound_play_task.o(.data);
 
 . = 0x00005740; gUnknown_03005740 = .;
 . = 0x00005780; gUnknown_03005780 = .;
