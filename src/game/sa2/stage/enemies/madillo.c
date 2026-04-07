@@ -131,7 +131,7 @@ static void Task_8056230(void)
     s2 = &p->spriteInfoBody->s;
 
     if ((s2->hitboxes[0].index != -1)) {
-        if (HB_COLLISION(pos.x, pos.y, s->hitboxes[0], I(p->qWorldX), I(p->qWorldY), s2->hitboxes[0])) {
+        if (HB_COLLISION(pos.x, pos.y, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), s2->hitboxes[0].b)) {
             if ((p->itemEffect & 0x2) == PLAYER_ITEM_EFFECT__NONE) {
                 Coll_DamagePlayer(p);
             }

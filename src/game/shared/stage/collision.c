@@ -109,7 +109,7 @@ bool32 Coll_Player_Entity_HitboxN(Sprite *s, s32 sx, s32 sy, s16 hbIndex, Player
         return FALSE;
     }
 
-    if ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[hbIndexPlayer]))) {
+    if ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[hbIndexPlayer].b))) {
         return TRUE;
     }
 
@@ -134,7 +134,7 @@ bool32 Coll_Player_Boss_Attack(Sprite *s, s32 sx, s32 sy, s16 hbIndex, Player *p
         return FALSE;
     }
 
-    if ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[1]))) {
+    if ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[1].b))) {
         Coll_Player_Enemy_AdjustSpeed(p);
         return TRUE;
     }
@@ -159,7 +159,7 @@ bool32 Coll_Cheese_Enemy_Attack(Sprite *sprTarget, s32 sx, s32 sy, s16 hbIndex, 
             return FALSE;
         }
 
-        if ((HB_COLLISION(sx, sy, sprTarget->hitboxes[hbIndex], I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1]))) {
+        if ((HB_COLLISION(sx, sy, sprTarget->hitboxes[hbIndex].b, I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1].b))) {
             return TRUE;
         }
     }
@@ -193,7 +193,7 @@ bool32 Coll_Player_Enemy_Attack(Sprite *s, s32 sx, s32 sy, u8 hbIndex)
 
         if (!(movestate & MOVESTATE_IN_SCRIPTED)) {
             if (HITBOX_IS_ACTIVE(sprPlayer->hitboxes[1])) {
-                if (HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(player->qWorldX), I(player->qWorldY), sprPlayer->hitboxes[1])) {
+                if (HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(player->qWorldX), I(player->qWorldY), sprPlayer->hitboxes[1].b)) {
                     if (IS_MULTI_PLAYER) {
                         RoomEvent_EnemyDestroy *roomEvent = CreateRoomEvent();
                         roomEvent->type = ROOMEVENT_TYPE_ENEMY_DESTROYED;
@@ -213,7 +213,7 @@ bool32 Coll_Player_Enemy_Attack(Sprite *s, s32 sx, s32 sy, u8 hbIndex)
             }
 
             if (HITBOX_IS_ACTIVE(sprPlayer->hitboxes[0])
-                && (HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(player->qWorldX), I(player->qWorldY), sprPlayer->hitboxes[0]))) {
+                && (HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(player->qWorldX), I(player->qWorldY), sprPlayer->hitboxes[0].b))) {
                 if (!(player->itemEffect & PLAYER_ITEM_EFFECT__INVINCIBILITY)) {
                     Coll_DamagePlayer(player);
                 } else {
@@ -237,7 +237,7 @@ bool32 Coll_Player_Enemy_Attack(Sprite *s, s32 sx, s32 sy, u8 hbIndex)
         if (gCheese != NULL) {
             Cheese *cheese = gCheese;
             if (cheese->s.hitboxes[1].index != -1
-                && ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1])))) {
+                && ((HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1].b)))) {
                 if (IS_MULTI_PLAYER) {
                     RoomEvent_EnemyDestroy *roomEvent = CreateRoomEvent();
                     roomEvent->type = ROOMEVENT_TYPE_ENEMY_DESTROYED;
@@ -276,7 +276,7 @@ bool32 Coll_Player_Projectile(Sprite *s, s32 sx, s32 sy)
             return result;
         }
 
-        if ((HB_COLLISION(sx, sy, s->hitboxes[0], I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[0]))) {
+        if ((HB_COLLISION(sx, sy, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[0].b))) {
             Coll_DamagePlayer(p);
             result = TRUE;
         }
@@ -295,7 +295,7 @@ bool32 Coll_Player_ItemBox(Sprite *s, s32 sx, s32 sy)
     Sprite *sprPlayer = &psi->s;
 
     if (PLAYER_IS_ALIVE && HITBOX_IS_ACTIVE(sprPlayer->hitboxes[1]) && (HITBOX_IS_ACTIVE(s->hitboxes[0]))) {
-        if (HB_COLLISION(sx, sy, s->hitboxes[0], I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[1])) {
+        if (HB_COLLISION(sx, sy, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[1].b)) {
             result = TRUE;
         }
     }
@@ -310,7 +310,7 @@ bool32 Coll_Player_Enemy(Sprite *s, s32 sx, s32 sy, s16 hbIndex, Player *p)
     Sprite *sprPlayer = &psi->s;
 
     if (IS_ALIVE(p) && (HITBOX_IS_ACTIVE(s->hitboxes[hbIndex]) && HITBOX_IS_ACTIVE(sprPlayer->hitboxes[0]))) {
-        if (HB_COLLISION(sx, sy, s->hitboxes[hbIndex], I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[0])) {
+        if (HB_COLLISION(sx, sy, s->hitboxes[hbIndex].b, I(p->qWorldX), I(p->qWorldY), sprPlayer->hitboxes[0].b)) {
             Coll_DamagePlayer(p);
             return TRUE;
         }
@@ -628,14 +628,14 @@ u32 sub_800DA4C(Sprite *opponent, s16 oppX, s16 oppY, UNUSED s32 param3, UNUSED 
     // _0800DABC
 
     if ((p->qSpeedAirX == 0 && p->qSpeedAirY == 0) && HITBOX_IS_ACTIVE(opponent->hitboxes[1])) {
-        if (HB_COLLISION(oppX, oppY, opponent->hitboxes[1], mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[0])) {
+        if (HB_COLLISION(oppX, oppY, opponent->hitboxes[1].b, mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[0].b)) {
             // _0800DB68
             result |= COLL_FLAG_2;
         }
     }
     // _0800DB70
     if (HITBOX_IS_ACTIVE(mpPlayerSprite->hitboxes[1]) && HITBOX_IS_ACTIVE(opponent->hitboxes[0])
-        && HB_COLLISION(oppX, oppY, opponent->hitboxes[0], mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[1])) {
+        && HB_COLLISION(oppX, oppY, opponent->hitboxes[0].b, mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[1].b)) {
         // _0800DC34
         if (mpp->pos.x > oppX) {
             result |= COLL_FLAG_40000;
@@ -652,7 +652,7 @@ u32 sub_800DA4C(Sprite *opponent, s16 oppX, s16 oppY, UNUSED s32 param3, UNUSED 
 
         result |= COLL_FLAG_1;
     } else if (HITBOX_IS_ACTIVE(mpPlayerSprite->hitboxes[0]) && HITBOX_IS_ACTIVE(opponent->hitboxes[1])
-               && HB_COLLISION(oppX, oppY, opponent->hitboxes[1], mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[0])) {
+               && HB_COLLISION(oppX, oppY, opponent->hitboxes[1].b, mpp->pos.x, mpp->pos.y, mpPlayerSprite->hitboxes[0].b)) {
         result |= COLL_FLAG_2;
     }
 

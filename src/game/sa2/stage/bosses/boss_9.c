@@ -1828,7 +1828,7 @@ bool32 sub_804F010(Sprite *s, s32 x, s32 y, u8 hbIndex)
         return FALSE;
     }
 
-    if (HB_COLLISION(x, y, s->hitboxes[hbIndex], I(qSonicX), I(qSonicY), sprSonic->hitboxes[0])) {
+    if (HB_COLLISION(x, y, s->hitboxes[hbIndex].b, I(qSonicX), I(qSonicY), sprSonic->hitboxes[0].b)) {
         return TRUE;
     } else {
         return FALSE;

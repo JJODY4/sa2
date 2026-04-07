@@ -157,7 +157,7 @@ void Task_8055084(void)
             Sprite_Yado *yado2 = TASK_DATA(gCurTask);
 
             if (cheese->s.hitboxes[1].index != HITBOX_STATE_INACTIVE) {
-                if (HB_COLLISION(x, y, s->hitboxes[0], I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1])) {
+                if (HB_COLLISION(x, y, s->hitboxes[0].b, I(cheese->posX), I(cheese->posY), cheese->s.hitboxes[1].b)) {
                     if (IS_MULTI_PLAYER) {
                         RoomEvent_EnemyDestroy *roomEvent = CreateRoomEvent();
                         roomEvent->type = ROOMEVENT_TYPE_ENEMY_DESTROYED;

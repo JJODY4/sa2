@@ -259,7 +259,7 @@ NONMATCH("asm/non_matching/game/sa2/stage/interactables/egg_utopia/cannon__IsPla
     playerY = I(gPlayer.qWorldY) - gCamera.y;
 
     // gPlayerBodyPSI.s.hitboxes[0] s-<hitboxes[0]
-    if (HB_COLLISION(x, y, s2->hitboxes[0], playerX, playerY, gPlayerBodyPSI.s.hitboxes[0])) {
+    if (HB_COLLISION(x, y, s2->hitboxes[0].b, playerX, playerY, gPlayerBodyPSI.s.hitboxes[0].b)) {
         return 1;
     }
 
