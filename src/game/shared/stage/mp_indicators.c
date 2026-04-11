@@ -269,7 +269,7 @@ void CreateSelfPositionIndicator(void)
 #endif
 
 #ifndef COLLECT_RINGS_ROM
-static void Task_801951C(void)
+static void SA2_LABEL(Task_801951C)(void)
 {
     OpponentIndicator *pi = TASK_DATA(gCurTask);
     struct Task *t = gMultiplayerPlayerTasks[pi->playerId];
@@ -289,7 +289,7 @@ static void Task_801951C(void)
 #endif
 
 #if (GAME == GAME_SA2)
-static void Task_8019898(void)
+static void SA2_LABEL(Task_8019898)(void)
 {
     OpponentIndicator *pi = TASK_DATA(gCurTask);
     struct Task *t = gMultiplayerPlayerTasks[pi->playerId];
