@@ -54,7 +54,7 @@ SECTIONS {
         sa2/src/game/sa1/stage/enemies/bosses_egg_mobile.o(.text);
         sa2/src/game/sa1/stage/enemies/bosses_misc.o(.text);
         sa2/src/game/sa1/stage/nuts_and_bolts_task.o(.text);
-        src/game/shared/stage/spot_lights_manager.o(.text);
+        sa2/src/game/shared/stage/spot_lights_manager.o(.text);
 
         src/game/shared/stage/mp_event_mgr.o(.text);
         sa2/src/game/shared/stage/mp_event_recv_mgr.o(.text);

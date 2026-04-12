@@ -262,6 +262,7 @@ SA2_C_FILES := \
 	src/game/shared/stage/underwater_effects.c \
 	src/game/shared/stage/grind_effect_1.c \
 	src/game/shared/stage/mp_event_recv_mgr.c \
+	src/game/shared/stage/spot_lights_manager.c \
 	src/game/sa1/ui/game_2_0.c \
 	src/game/sa1/ui/game_2_1.c \
 	src/game/sa1/ui/stage_results.c \
