@@ -1453,7 +1453,7 @@ bool32 Coll_DamagePlayer(Player *p)
 
     p->moveState &= ~MOVESTATE_STOOD_ON_OBJ;
     p->moveState &= ~MOVESTATE_20;
-    p->moveState &= ~MOVESTATE_4;
+    p->moveState &= ~MOVESTATE_SPIN_ATTACK;
     p->moveState &= ~MOVESTATE_FLIP_WITH_MOVE_DIR;
     p->moveState |= MOVESTATE_IN_AIR;
     p->moveState &= ~MOVESTATE_SPINDASH;
@@ -1464,14 +1464,14 @@ bool32 Coll_DamagePlayer(Player *p)
 
     {
 #if !NON_MATCHING && (GAME == GAME_SA1)
-        u8 *ptr = &p->sa2__unk61;
+        u8 *ptr = &p->SA2_LABEL(unk61);
         u32 zero = 0;
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
         asm("add %0, #1" : "=r"(ptr));
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
 #else
-        p->sa2__unk61 = 0;
-        p->sa2__unk62 = 0;
+        p->SA2_LABEL(unk61) = 0;
+        p->SA2_LABEL(unk62) = 0;
 #endif
     }
 
@@ -1555,8 +1555,8 @@ bool32 Coll_DamageSuperSonic(Player *p)
     p->qSpeedAirY = -Q(0);
     p->sa2__unk2A = 24;
     p->charState = 4;
-    p->sa2__unk61 = 0;
-    p->sa2__unk62 = 0;
+    p->SA2_LABEL(unk61) = 0;
+    p->SA2_LABEL(unk62) = 0;
 
     m4aSongNumStart(SE_LIFE_LOST);
 
@@ -1587,7 +1587,7 @@ bool32 SA2_LABEL(sub_800DD54)(Player *p)
 
     p->moveState &= ~MOVESTATE_STOOD_ON_OBJ;
     p->moveState &= ~MOVESTATE_20;
-    p->moveState &= ~MOVESTATE_4;
+    p->moveState &= ~MOVESTATE_SPIN_ATTACK;
     p->moveState &= ~MOVESTATE_FLIP_WITH_MOVE_DIR;
     p->moveState |= MOVESTATE_IN_AIR;
     p->moveState &= ~MOVESTATE_SPINDASH;
@@ -1602,14 +1602,14 @@ bool32 SA2_LABEL(sub_800DD54)(Player *p)
 
     {
 #if !NON_MATCHING && (GAME == GAME_SA1)
-        u8 *ptr = &p->sa2__unk61;
+        u8 *ptr = &p->SA2_LABEL(unk61);
         u32 zero = 0;
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
         asm("add %0, #1" : "=r"(ptr));
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
 #else
-        p->sa2__unk61 = 0;
-        p->sa2__unk62 = 0;
+        p->SA2_LABEL(unk61) = 0;
+        p->SA2_LABEL(unk62) = 0;
 #endif
     }
 
@@ -1663,7 +1663,7 @@ bool32 SA2_LABEL(sub_800DE44)(Player *p)
 
     p->moveState &= ~MOVESTATE_STOOD_ON_OBJ;
     p->moveState &= ~MOVESTATE_20;
-    p->moveState &= ~MOVESTATE_4;
+    p->moveState &= ~MOVESTATE_SPIN_ATTACK;
     p->moveState &= ~MOVESTATE_FLIP_WITH_MOVE_DIR;
     p->moveState |= MOVESTATE_IN_AIR;
     p->moveState &= ~MOVESTATE_SPINDASH;
@@ -1678,14 +1678,14 @@ bool32 SA2_LABEL(sub_800DE44)(Player *p)
 
     {
 #if !NON_MATCHING && (GAME == GAME_SA1)
-        u8 *ptr = &p->sa2__unk61;
+        u8 *ptr = &p->SA2_LABEL(unk61);
         u32 zero = 0;
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
         asm("add %0, #1" : "=r"(ptr));
         asm("strb %0, [%1]" ::"r"(zero), "r"(ptr));
 #else
-        p->sa2__unk61 = 0;
-        p->sa2__unk62 = 0;
+        p->SA2_LABEL(unk61) = 0;
+        p->SA2_LABEL(unk62) = 0;
 #endif
     }
 

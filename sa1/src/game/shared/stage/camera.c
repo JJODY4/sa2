@@ -849,7 +849,7 @@ void UpdateCamera(void)
         newX = CLAMP(newX, camera->minX, camera->maxX - DISPLAY_WIDTH);
 
 #if (GAME == GAME_SA1)
-        if ((player->moveState & MOVESTATE_IN_AIR) && (player->character != CHARACTER_KNUCKLES || player->sa2__unk61 != 9))
+        if ((player->moveState & MOVESTATE_IN_AIR) && (player->character != CHARACTER_KNUCKLES || player->SA2_LABEL(unk61) != 9))
 #elif (GAME == GAME_SA2)
         if (camera->unk8 < Q(16)) {
             camera->unk8 += Q(0.125);

@@ -56,7 +56,7 @@ SECTIONS {
         sa2/src/game/sa1/stage/nuts_and_bolts_task.o(.text);
         sa2/src/game/shared/stage/spot_lights_manager.o(.text);
 
-        src/game/shared/stage/mp_event_mgr.o(.text);
+        sa2/src/game/shared/stage/mp_event_mgr.o(.text);
         sa2/src/game/shared/stage/mp_event_recv_mgr.o(.text);
         sa2/src/game/sa1/stage/mp_results.o(.text);
         sa2/src/game/sa1/stage/mp_results_b.o(.text);
@@ -329,7 +329,7 @@ SECTIONS {
         sa2/src/game/sa1/menus/player_data.o(.rodata);
         sa2/src/game/shared/stage/unused_flash_task.o(.rodata);
         data/sa1/data_0_1_2.o(.rodata);
-        src/game/shared/stage/mp_event_mgr.o(.rodata);
+        sa2/src/game/shared/stage/mp_event_mgr.o(.rodata);
         sa2/src/game/sa1/stage/mp_results_b.o(.rodata);
         sa2/src/game/sa1/stage/mp_results.o(.rodata);
         sa2/src/game/shared/stage/mp_finish.o(.rodata);

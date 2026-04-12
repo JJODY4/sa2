@@ -223,7 +223,7 @@ block_23:
             } else {
                 if (!(gPlayer.moveState & 0x2)) {
                     sp30 |= MOVESTATE_20;
-                    sp30 &= ~MOVESTATE_4;
+                    sp30 &= ~MOVESTATE_SPIN_ATTACK;
                 }
             }
             sp30 |= 8;
