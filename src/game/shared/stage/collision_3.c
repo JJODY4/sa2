@@ -36,6 +36,244 @@ u32 Coll_Player_Entity_RectIntersection(Sprite *s, s32 sx, s32 sy, Player *p, Re
     return result;
 }
 
+#if (GAME == GAME_SA1)
+u32 Coll_AmyHammer_Spring(Sprite *s, s16 worldX, s16 worldY, Player *p)
+{
+    bool32 isColliding = FALSE;
+
+    if (p->character == CHARACTER_AMY) {
+        if ((p->charState == CHARSTATE_87) || (p->charState == CHARSTATE_88) || (p->charState == CHARSTATE_89)
+            || (p->charState == CHARSTATE_90)) {
+            if (p->spriteInfoBody->s.hitboxes[1].index != HITBOX_STATE_INACTIVE) {
+                if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), p->spriteInfoBody->s.hitboxes[1].b)) {
+                    isColliding = TRUE;
+                }
+            }
+        }
+    }
+
+    return isColliding;
+}
+
+u32 Coll_Player_Spring_Sideways(Sprite *s, CamCoord worldX, CamCoord worldY, Player *p)
+{
+    s8 rectDataPlayerA[4] = { -(p->spriteOffsetX + 5), (1 - p->spriteOffsetY), (p->spriteOffsetX + 5), (p->spriteOffsetY - 1) };
+    s8 rectDataPlayerB[4] = { -(p->spriteOffsetX + 0), (0 - p->spriteOffsetY), (p->spriteOffsetX + 0), (p->spriteOffsetY + 0) };
+    Rect8 *rectPlayerB;
+
+    u32 moveState = 0;
+    bool32 stoodOnCurrent = 0;
+
+    if (s->hitboxes[0].index == -1) {
+        return moveState;
+    }
+
+    if (!IS_ALIVE(p)) {
+        return moveState;
+    }
+
+    moveState = p->moveState & MOVESTATE_IN_AIR;
+    rectPlayerB = (Rect8 *)&rectDataPlayerB[0];
+    if ((p->moveState & MOVESTATE_STOOD_ON_OBJ) && (p->stoodObj == s)) {
+        p->moveState &= ~MOVESTATE_STOOD_ON_OBJ;
+        moveState |= MOVESTATE_IN_AIR;
+        stoodOnCurrent = 1;
+    }
+
+    if (moveState & MOVESTATE_IN_AIR) {
+        if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*rectPlayerB))) {
+            if (sub_800C934(s, worldX, worldY, (Rect8 *)&rectDataPlayerB, stoodOnCurrent, p, &moveState)) {
+                return moveState;
+            }
+        } else if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*(Rect8 *)&rectDataPlayerA))) {
+            if (I(p->qWorldX) <= worldX) {
+                if (p->qSpeedAirX >= 0) {
+                    p->qSpeedAirX = 0;
+                    p->qWorldX = Q((worldX + s->hitboxes[0].b.left) - rectDataPlayerA[2]);
+                    moveState |= MOVESTATE_20000;
+                }
+            } else if (p->qSpeedAirX <= 0) {
+                p->qSpeedAirX = 0;
+                p->qWorldX = Q(((worldX + s->hitboxes[0].b.right) - rectDataPlayerA[0]) + 1);
+                moveState |= MOVESTATE_40000;
+            }
+        }
+    }
+
+    if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*(Rect8 *)&rectDataPlayerA))) {
+        if (I(p->qWorldX) <= worldX) {
+            if (p->qSpeedAirX >= 0) {
+                moveState |= MOVESTATE_20000;
+
+                if (p->qSpeedAirX > 0) {
+                    moveState |= MOVESTATE_20;
+                    moveState &= ~MOVESTATE_FACING_LEFT;
+                    p->qWorldX = Q((worldX + s->hitboxes[0].b.left) - rectDataPlayerA[2]);
+                }
+            }
+        } else {
+            if (p->qSpeedAirX <= 0) {
+                moveState |= MOVESTATE_40000;
+
+                if (p->qSpeedAirX < 0) {
+                    moveState |= MOVESTATE_20;
+                    moveState |= MOVESTATE_FACING_LEFT;
+                    p->qWorldX = Q(((worldX + s->hitboxes[0].b.right) - rectDataPlayerA[0]) + 1);
+                }
+            }
+        }
+    }
+
+    return moveState;
+}
+
+// (99.92%) https://decomp.me/scratch/GFpFd
+NONMATCH("asm/non_matching/game/shared/stage/collision__Coll_Player_Itembox.inc",
+         u32 Coll_Player_Itembox(Sprite *s, CamCoord worldX, CamCoord worldY, Player *p))
+{
+    s8 rectDataPlayerA[4] = { -(p->spriteOffsetX + 5), (1 - p->spriteOffsetY), (p->spriteOffsetX + 5), (p->spriteOffsetY - 1) };
+    s8 rectDataPlayerB[4] = { -(p->spriteOffsetX + 0), (0 - p->spriteOffsetY), (p->spriteOffsetX + 0), (p->spriteOffsetY + 0) };
+    Rect8 *rectPlayerB = (Rect8 *)&rectDataPlayerB[0];
+
+    u32 result;
+    s32 middleX;
+    s32 middleY;
+
+    result = 0;
+    if (s->hitboxes[0].index == -1) {
+        return result;
+    }
+
+    if (!IS_ALIVE(p)) {
+        return result;
+    }
+
+    if (p->spriteInfoBody->s.hitboxes[1].index != -1) {
+        if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), p->spriteInfoBody->s.hitboxes[1].b)) {
+            result |= 0x20;
+            if (p->moveState & MOVESTATE_IN_AIR) {
+                if (p->qSpeedAirY > 0) {
+                    p->qSpeedAirY = -p->qSpeedAirY;
+                }
+            }
+        }
+    }
+
+    if (p->moveState & MOVESTATE_IN_AIR) {
+        middleX = worldX + ((s->hitboxes[0].b.left + s->hitboxes[0].b.right) >> 1);
+        middleY = worldY + ((s->hitboxes[0].b.top + s->hitboxes[0].b.bottom) >> 1);
+
+        if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*rectPlayerB))) {
+            if ((!GRAVITY_IS_INVERTED && (I(p->qWorldY) <= middleY)) || (GRAVITY_IS_INVERTED && (I(p->qWorldY) >= middleY))) {
+                if ((p->character == 1) && (p->SA2_LABEL(unk61) != 0)) {
+                    Coll_Player_Platform(s, worldX, worldY, p);
+                    return 0;
+                } else if (p->qSpeedAirY >= 0) {
+                    result |= 8;
+
+                    if (p->qSpeedAirY > 0) {
+                        p->qSpeedAirY = -p->qSpeedAirY;
+                    }
+                }
+            } else if (p->qSpeedAirY < 0) {
+                p->qSpeedAirY = 0;
+
+                if (!GRAVITY_IS_INVERTED) {
+                    p->qWorldY = p->qWorldY + (Q((worldY + s->hitboxes[0].b.bottom) - rectDataPlayerB[1]) - (0xFFFFFF00 & p->qWorldY));
+                } else {
+                    p->qWorldY = p->qWorldY - (Q((worldY + s->hitboxes[0].b.bottom) - rectDataPlayerB[1]) - (0xFFFFFF00 & p->qWorldY));
+                }
+
+                result |= 0x10000;
+            }
+        } else if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*(Rect8 *)&rectDataPlayerA[0]))) {
+            if (I(p->qWorldX) <= middleX) {
+                if (p->qSpeedAirX > 0) {
+                    p->qSpeedAirX = 0;
+                    p->qWorldX = Q(worldX + s->hitboxes[0].b.left - rectDataPlayerA[2]);
+                }
+            } else {
+                if (p->qSpeedAirX < 0) {
+                    p->qSpeedAirX = 0;
+                    p->qWorldX = Q((worldX + s->hitboxes[0].b.right - rectDataPlayerA[0]) + 1);
+                }
+            }
+        }
+    }
+
+    return result;
+}
+END_NONMATCH
+
+// Used by Security Gate and Breakable Wall.
+u32 Coll_Player_Gate(Sprite *s, CamCoord worldX, CamCoord worldY, Player *p, u32 arg4)
+{
+    u32 result = 0;
+    s8 rectPlayer[4] = { -(p->spriteOffsetX + 5), (1 - p->spriteOffsetY), (p->spriteOffsetX + 5), (p->spriteOffsetY - 1) };
+
+    if (s->hitboxes[0].index == -1) {
+        return result;
+    }
+
+    if (!IS_ALIVE(p)) {
+        return result;
+    }
+
+    if (arg4 != 0) {
+        if (p->spriteInfoBody->s.hitboxes[1].index != -1) {
+            if (HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), p->spriteInfoBody->s.hitboxes[1].b)
+                || HB_COLLISION(worldX, worldY, s->hitboxes[0].b, I(p->qWorldX), I(p->qWorldY), (*(Rect8 *)&rectPlayer[0]))) {
+
+                result |= 8;
+                if ((p->moveState & MOVESTATE_IN_AIR) && (p->qSpeedAirY > 0)) {
+                    p->qSpeedAirY = -p->qSpeedAirY;
+                }
+
+                return result;
+            }
+        }
+    }
+
+    sub_800CBBC(s, worldX, worldY, (Rect8 *)&rectPlayer, 0, p, &result);
+    return result;
+}
+
+u32 Coll_Player_SkatingStone(Sprite *s, CamCoord worldX, CamCoord worldY, Player *p)
+{
+    s32 moveState;
+    s32 var_sb;
+
+    s8 rectPlayer[4] = { -p->spriteOffsetX, -p->spriteOffsetY, +p->spriteOffsetX, +p->spriteOffsetY };
+
+    u32 result;
+
+    result = 0;
+    var_sb = 0;
+
+    if ((s->hitboxes[0].index == -1) || (((0x80 & p->moveState) != 0))) {
+        return 0U;
+    }
+
+    moveState = p->moveState & MOVESTATE_IN_AIR;
+    if ((p->moveState & MOVESTATE_STOOD_ON_OBJ) && (p->stoodObj == s)) {
+        p->moveState = p->moveState & ~MOVESTATE_STOOD_ON_OBJ;
+        moveState |= MOVESTATE_IN_AIR;
+        var_sb = 1;
+    }
+
+    if (((moveState == 0) || !sub_800C934(s, worldX, worldY, (Rect8 *)rectPlayer, var_sb, p, &result))
+        && !sub_800C934(s, worldX, worldY, (Rect8 *)rectPlayer, var_sb, p, &result)) {
+        if (var_sb) {
+            if (!(p->moveState & MOVESTATE_STOOD_ON_OBJ)) {
+                p->moveState = (p->moveState & ~MOVESTATE_20) | MOVESTATE_IN_AIR;
+            }
+        }
+    }
+
+    return result;
+}
+#endif
+
 // (Link included because of register-match)
 // (100.00%) https://decomp.me/scratch/0Ro0I
 u32 Coll_Player_PlatformCrumbling(Sprite *s, s32 sx, s32 sy, Player *p)

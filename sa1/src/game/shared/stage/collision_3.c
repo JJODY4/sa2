@@ -28,8 +28,9 @@
 
 // COLLISION 3
 
-bool32 Coll_DamageSuperSonic(Player *p);
+static bool32 Coll_DamageSuperSonic(Player *p);
 
+#ifndef COLLECT_RINGS_ROM
 u32 Coll_Player_Entity_RectIntersection(Sprite *s, CamCoord sx, CamCoord sy, Player *p, Rect8 *rectPlayer)
 {
     u32 result = 0;
@@ -44,6 +45,7 @@ u32 Coll_Player_Entity_RectIntersection(Sprite *s, CamCoord sx, CamCoord sy, Pla
 
     return result;
 }
+#endif
 
 #if (GAME == GAME_SA1)
 u32 Coll_AmyHammer_Spring(Sprite *s, s16 worldX, s16 worldY, Player *p)
@@ -283,11 +285,8 @@ u32 Coll_Player_SkatingStone(Sprite *s, CamCoord worldX, CamCoord worldY, Player
 }
 #endif
 
-// sa2__sub_800C060
-// 'Coll_Player_PlatformCrumbling' name from SA2, called by many Entities in SA1!
-// (86.62%) https://decomp.me/scratch/kyp0r
-NONMATCH("asm/non_matching/game/shared/stage/collision__sa2__800C060.inc",
-         u32 Coll_Player_PlatformCrumbling(Sprite *s, CamCoord sx, CamCoord sy, Player *p))
+// SA1 reg mismatch: https://decomp.me/scratch/LcYA5
+u32 Coll_Player_PlatformCrumbling(Sprite *s, CamCoord sx, CamCoord sy, Player *p)
 {
     s8 rectPlayer[4] = { -p->spriteOffsetX, -p->spriteOffsetY, +p->spriteOffsetX, +p->spriteOffsetY };
 
@@ -306,7 +305,12 @@ NONMATCH("asm/non_matching/game/shared/stage/collision__sa2__800C060.inc",
     if (RECT_COLLISION_2(sx, sy, &s->hitboxes[0].b, p->qWorldX, p->qWorldY, (Rect8 *)rectPlayer) && (p->qSpeedAirY >= 0)) {
 
 #ifndef NON_MATCHING
+#if (GAME == GAME_SA1)
+        register s32 y asm("r0");
+        s32 mask = 0xFFFFFF00;
+#elif (GAME == GAME_SA2)
         register s32 y asm("r1");
+#endif
 #else
         s32 y;
 #endif
@@ -341,17 +345,17 @@ NONMATCH("asm/non_matching/game/shared/stage/collision__sa2__800C060.inc",
         p->qSpeedAirY = 0;
 
         if (!GRAVITY_IS_INVERTED) {
-            y = s->hitboxes[0].b.top;
-            y += sy;
-            y -= rectPlayer[3];
+            y = sy;
+            y = (((y + s->hitboxes[0].b.top) - rectPlayer[3]));
+            y = Q_24_8(y);
         } else {
-            y = s->hitboxes[0].b.bottom;
-            y += sy;
-            y += rectPlayer[3];
+            y = sy;
+            y = (y + s->hitboxes[0].b.bottom) + rectPlayer[3];
+            y = Q_24_8(y);
         }
-        y = Q(y);
-#ifndef NON_MATCHING
-        asm("" : "=r"(p->qWorldY) : "r"(~0xFF), "r"(p->qWorldY), "r"(y));
+
+#if (GAME == GAME_SA1) && !defined(NON_MATCHING)
+        p->qWorldY = ((p->qWorldY & ~mask)) + (y);
 #else
         p->qWorldY = Q_24_8_FRAC(p->qWorldY) + (y);
 #endif
@@ -362,7 +366,6 @@ NONMATCH("asm/non_matching/game/shared/stage/collision__sa2__800C060.inc",
 
     return result;
 }
-END_NONMATCH
 
 // TODO: Simplify and merge SA1 and SA2 versions!
 #if (GAME == GAME_SA1)
