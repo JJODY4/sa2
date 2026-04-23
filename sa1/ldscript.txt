@@ -144,7 +144,7 @@ SECTIONS {
         sa2/src/game/sa1/stage/player_super_sonic.o(.text);
         sa2/src/game/shared/stage/item_tasks.o(.text);
         sa2/src/game/shared/stage/underwater_effects.o(.text);
-        src/game/shared/stage/water_effects.o(.text);
+        sa2/src/game/shared/stage/water_effects.o(.text);
         sa2/src/game/shared/stage/screen_shake.o(.text);
 
         /* NOTE: input_recorder was not part of the engine in this version */
