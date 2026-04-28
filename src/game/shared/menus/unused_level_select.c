@@ -219,7 +219,7 @@ void Task_CreateSelectedTask(void)
         gCurrentLevel = levelId - 1;
 
         if (!(gInput & R_BUTTON)) {
-            ApplyGameStageSettings();
+            ApplyGameStageSettingsAndStart();
         } else {
             CreateSpecialStage();
         }
