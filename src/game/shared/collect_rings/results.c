@@ -494,17 +494,17 @@ void Task_MultiplayerSinglePakResultsScreenInit(void)
         for (i = 0; i < 4; i++) {
             if (!(gMultiSioStatusFlags & MULTI_SIO_RECV_ID(i + 8))) {
                 if (gMultiplayerRanks[i] & 1) {
-                    SA2_LABEL(sub_80078D4)(3, i * 40, (i + 1) * 40, DISPLAY_WIDTH - resultsScreen->unk430, DISPLAY_HEIGHT - i * 40);
+                    SA2_LABEL(SetWindowRegion)(3, i * 40, (i + 1) * 40, DISPLAY_WIDTH - resultsScreen->unk430, DISPLAY_HEIGHT - i * 40);
                 } else {
-                    SA2_LABEL(sub_80078D4)(3, i * 40, (i + 1) * 40, resultsScreen->unk430 - DISPLAY_WIDTH, DISPLAY_HEIGHT - i * 40);
+                    SA2_LABEL(SetWindowRegion)(3, i * 40, (i + 1) * 40, resultsScreen->unk430 - DISPLAY_WIDTH, DISPLAY_HEIGHT - i * 40);
                 }
             } else {
                 if (gMultiplayerRanks[i] & 1) {
-                    SA2_LABEL(sub_80078D4)
+                    SA2_LABEL(SetWindowRegion)
                     (3, gMultiplayerRanks[i] * 40, (gMultiplayerRanks[i] + 1) * 40, DISPLAY_WIDTH - resultsScreen->unk430,
                      (i * 5 - gMultiplayerRanks[i] * 5) * 8);
                 } else {
-                    SA2_LABEL(sub_80078D4)
+                    SA2_LABEL(SetWindowRegion)
                     (3, gMultiplayerRanks[i] * 40, (gMultiplayerRanks[i] + 1) * 40, resultsScreen->unk430 - DISPLAY_WIDTH,
                      (i * 5 - gMultiplayerRanks[i] * 5) * 8);
                 }
@@ -709,10 +709,10 @@ void SA2_LABEL(sub_8082788)(void)
 #endif
             }
 #endif
-            SA2_LABEL(sub_80078D4)(3, i * 40, (i + 1) * 40, 0, DISPLAY_HEIGHT - i * 40);
+            SA2_LABEL(SetWindowRegion)(3, i * 40, (i + 1) * 40, 0, DISPLAY_HEIGHT - i * 40);
         } else {
             union MultiSioData *send_recv;
-            SA2_LABEL(sub_80078D4)
+            SA2_LABEL(SetWindowRegion)
             (3, gMultiplayerRanks[i] * 40, (gMultiplayerRanks[i] + 1) * 40, 0, i * 40 - gMultiplayerRanks[i] * 40);
 #if (GAME == GAME_SA1)
             send_recv = &gMultiSioRecv[i];

@@ -47,7 +47,7 @@ void Task_SegaLogoInit();
 void Task_SetSegaLogoTask();
 void Task_SonicTeamLogoInit();
 void Task_SwitchTo_Task_MainMenu_Select();
-void Task_800D11C();
+void Task_SegaLogoScrollOut(); //Originally Task_800D11C
 void sub_800D364();
 void sub_800D3E0();
 void SwitchToSonicTeamLogo();
@@ -146,23 +146,23 @@ void Task_SegaLogoInit(void)
     logo = TASK_DATA(gCurTask);
     gDispCnt |= DISPCNT_BG2_ON;
     logo->unk0++;
-    SA2_LABEL(sub_8007858)(2U, 0U, (160 - logo->unk0), gBgScrollRegs[2][0], (gBgScrollRegs[2][1] + 160) - logo->unk0);
-    SA2_LABEL(sub_80078D4)(2U, (160 - logo->unk0), 160, (u16)gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+    SA2_LABEL(SetWindowRegionExtended)(2U, 0U, (160 - logo->unk0), gBgScrollRegs[2][0], (gBgScrollRegs[2][1] + 160) - logo->unk0); //Originally sub_80078D4
+    SA2_LABEL(SetWindowRegion)(2U, (160 - logo->unk0), 160, (u16)gBgScrollRegs[2][0], gBgScrollRegs[2][1]); //Originally sub_8007858
 
     if (logo->unk0 == 160) {
         gCurTask->main = sub_800D3E0;
-        logo->unk0 = 0U;
+        logo->unk0 = 0U;6
     }
 }
 
-void Task_800D11C(void)
+void Task_SegaLogoScrollOut(void)
 {
     SegaLogo *logo;
 
     logo = TASK_DATA(gCurTask);
     logo->unk0++;
-    SA2_LABEL(sub_80078D4)(2U, 0U, (160 - logo->unk0), gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
-    SA2_LABEL(sub_8007858)
+    SA2_LABEL(SetWindowRegion)(2U, 0U, (160 - logo->unk0), gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+    SA2_LABEL(SetWindowRegionExtended)
     (2U, (160 - logo->unk0), 160, gBgScrollRegs[2][0], (gBgScrollRegs[2][1] + 160) - logo->unk0);
 
     if (logo->unk0 == 160) {
@@ -228,8 +228,8 @@ void Task_800D268(void)
 
     logo->unk0 += 2;
     if (logo->unk0 < 280) {
-        SA2_LABEL(sub_80078D4)(2, 0, 40, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
-        SA2_LABEL(sub_80078D4)(2, 120, 160, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+        SA2_LABEL(SetWindowRegion)(2, 0, 40, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+        SA2_LABEL(SetWindowRegion)(2, 120, 160, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
 
 #if !PORTABLE
         // BUG: For some reason this currently overwrites memory it shouldn't be able to access.
@@ -239,7 +239,7 @@ void Task_800D268(void)
             SA2_LABEL(sub_8007958)(2U, 40, 120, (s16)(280 - logo->unk0), -1, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
         } else {
             SA2_LABEL(sub_8007958)(2U, 40, (64 - logo->unk0), (280 - logo->unk0), -1, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
-            SA2_LABEL(sub_80078D4)(2U, (64 - logo->unk0), 120, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+            SA2_LABEL(SetWindowRegion)(2U, (64 - logo->unk0), 120, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
         }
 #endif
     } else {
@@ -280,7 +280,7 @@ void sub_800D3E0(void)
     SegaLogo *logo = TASK_DATA(gCurTask);
 
     if (++logo->unk0 == 120) {
-        gCurTask->main = Task_800D11C;
+        gCurTask->main = Task_SegaLogoScrollOut;
         logo->unk0 = 0U;
     }
 }

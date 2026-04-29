@@ -811,21 +811,21 @@ void sub_803BE0C()
 
     var_r4 = message->unk50;
     if (message->unk50 != 0) {
-        SA2_LABEL(sub_80078D4)(0U, 0U, var_r4, DISPLAY_WIDTH, 0U);
+        SA2_LABEL(SetWindowRegion)(0U, 0U, var_r4, DISPLAY_WIDTH, 0U);
     }
 
     for (var_r6 = 0; var_r6 < message->unk54; var_r6++) {
         u32 mask = 0x1FF;
 #ifndef NON_MATCHING
-        SA2_LABEL(sub_80078D4)(0U, var_r4, var_r4 += 0x28, ~message->unk48[var_r6] & mask, (-message->unk50));
+        SA2_LABEL(SetWindowRegion)(0U, var_r4, var_r4 += 0x28, ~message->unk48[var_r6] & mask, (-message->unk50));
 #else
-        SA2_LABEL(sub_80078D4)(0U, var_r4, var_r4 + 0x28, ~message->unk48[var_r6] & mask, (-message->unk50));
+        SA2_LABEL(SetWindowRegion)(0U, var_r4, var_r4 + 0x28, ~message->unk48[var_r6] & mask, (-message->unk50));
         var_r4 += 0x28;
 #endif
     }
 
     if (var_r4 < DISPLAY_HEIGHT) {
-        SA2_LABEL(sub_80078D4)(0U, var_r4, DISPLAY_HEIGHT, DISPLAY_WIDTH, 0U);
+        SA2_LABEL(SetWindowRegion)(0U, var_r4, DISPLAY_HEIGHT, DISPLAY_WIDTH, 0U);
     }
 }
 

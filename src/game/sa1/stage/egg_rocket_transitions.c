@@ -142,13 +142,13 @@ void Task_8028F20(void)
         Task_8029070();
     } else if ((ip > 0) && (r7 < DISPLAY_HEIGHT)) {
         if (shake->worldY - gCamera.y > 0) {
-            SA2_LABEL(sub_80078D4)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+            SA2_LABEL(SetWindowRegion)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
 
-            SA2_LABEL(sub_8007858)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+            SA2_LABEL(SetWindowRegionExtended)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
         } else {
-            SA2_LABEL(sub_8007858)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+            SA2_LABEL(SetWindowRegionExtended)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
         }
-        SA2_LABEL(sub_80078D4)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
+        SA2_LABEL(SetWindowRegion)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
     } else {
         gFlags &= ~FLAGS_EXECUTE_HBLANK_COPY;
     }
@@ -176,13 +176,13 @@ void Task_8029070(void)
         Task_8029194();
     } else if ((ip > 0) && (r7 < DISPLAY_HEIGHT)) {
         if (shake->worldY - gCamera.y > 0) {
-            SA2_LABEL(sub_80078D4)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+            SA2_LABEL(SetWindowRegion)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
 
-            SA2_LABEL(sub_8007858)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+            SA2_LABEL(SetWindowRegionExtended)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
         } else {
-            SA2_LABEL(sub_8007858)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+            SA2_LABEL(SetWindowRegionExtended)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
         }
-        SA2_LABEL(sub_80078D4)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
+        SA2_LABEL(SetWindowRegion)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
     } else {
         gFlags &= ~FLAGS_EXECUTE_HBLANK_COPY;
     }
@@ -266,13 +266,13 @@ NONMATCH("asm/non_matching/game/egg_rocket_trans__Task_8029194.inc", void Task_8
     } else {
         if ((ip > 0) && (r7 < DISPLAY_HEIGHT)) {
             if (shake->worldY - gCamera.y > 0) {
-                SA2_LABEL(sub_80078D4)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+                SA2_LABEL(SetWindowRegion)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
 
-                SA2_LABEL(sub_8007858)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+                SA2_LABEL(SetWindowRegionExtended)(2, shake->worldY - gCamera.y, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
             } else {
-                SA2_LABEL(sub_8007858)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+                SA2_LABEL(SetWindowRegionExtended)(2, 0, r7, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
             }
-            SA2_LABEL(sub_80078D4)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
+            SA2_LABEL(SetWindowRegion)(2, r7, DISPLAY_HEIGHT, gBgScrollRegs[2][0], gBgScrollRegs[2][1] - I(shake->qUnk8));
         } else {
             gFlags &= ~FLAGS_EXECUTE_HBLANK_COPY;
         }
@@ -380,10 +380,10 @@ NONMATCH("asm/non_matching/game/egg_rocket_trans__Task_80294A8.inc", void Task_8
 
         gCamera.SA2_LABEL(unk50) &= ~0x8000;
     } else if ((shake->worldY - gCamera.y) > 0) {
-        SA2_LABEL(sub_80078D4)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
-        SA2_LABEL(sub_8007858)(2, shake->worldY - gCamera.y, DISPLAY_HEIGHT, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+        SA2_LABEL(SetWindowRegion)(2, 0, shake->worldY - gCamera.y, gBgScrollRegs[2][0], gBgScrollRegs[2][1]);
+        SA2_LABEL(SetWindowRegionExtended)(2, shake->worldY - gCamera.y, DISPLAY_HEIGHT, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
     } else {
-        SA2_LABEL(sub_8007858)(2, 0, DISPLAY_HEIGHT, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
+        SA2_LABEL(SetWindowRegionExtended)(2, 0, DISPLAY_HEIGHT, gBgScrollRegs[2][0], (DISPLAY_HEIGHT + 80));
     }
 }
 END_NONMATCH

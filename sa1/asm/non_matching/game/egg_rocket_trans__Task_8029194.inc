@@ -317,7 +317,7 @@ _080293F0:
 	str r0, [sp]
 	movs r0, #2
 	movs r1, #0
-	bl sa2__sub_80078D4
+	bl sa2__SetWindowRegion
 	ldrb r1, [r6, #4]
 	ldrb r0, [r5, #2]
 	subs r1, r1, r0
@@ -330,7 +330,7 @@ _080293F0:
 	movs r0, #0xf0
 	str r0, [sp]
 	movs r0, #2
-	bl sa2__sub_8007858
+	bl sa2__SetWindowRegionExtended
 	adds r4, r5, #0
 	b _08029466
 	.align 2, 0
@@ -346,7 +346,7 @@ _08029450:
 	str r0, [sp]
 	movs r0, #2
 	movs r1, #0
-	bl sa2__sub_8007858
+	bl sa2__SetWindowRegionExtended
 _08029466:
 	lsrs r1, r4, #0x18
 	ldr r0, _08029484 @ =gBgScrollRegs
@@ -360,7 +360,7 @@ _08029466:
 	str r0, [sp]
 	movs r0, #2
 	movs r2, #0xa0
-	bl sa2__sub_80078D4
+	bl sa2__SetWindowRegion
 	b _08029494
 	.align 2, 0
 _08029484: .4byte gBgScrollRegs

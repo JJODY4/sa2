@@ -202,18 +202,18 @@ void StageBgUpdate_Zone6Act1(s32 x, s32 y)
             }
 
             if (!(cam->SA2_LABEL(unk50) & 0x8000)) {
-                SA2_LABEL(sub_80078D4)(0, 0, 100, (u16)gBgScrollRegs[0][0], (u16)gBgScrollRegs[0][1]);
-                SA2_LABEL(sub_80078D4)(0, 100, 104, 0, DISPLAY_HEIGHT);
+                SA2_LABEL(SetWindowRegion)(0, 0, 100, (u16)gBgScrollRegs[0][0], (u16)gBgScrollRegs[0][1]);
+                SA2_LABEL(SetWindowRegion)(0, 100, 104, 0, DISPLAY_HEIGHT);
 
                 if ((128 - ((gStageTime >> 5) & 0x7F)) > 56) {
-                    SA2_LABEL(sub_80078D4)(0, 104, 160, 0, ((gStageTime >> 5) & 0x7F) + 160);
+                    SA2_LABEL(SetWindowRegion)(0, 104, 160, 0, ((gStageTime >> 5) & 0x7F) + 160);
                 } else {
                     int_vcount v = 232 - ((gStageTime >> 5) & 0x7F);
                     int_vcount w;
-                    SA2_LABEL(sub_80078D4)(0, 104, v, 0, ((gStageTime >> 5) & 0x7F) + 160);
+                    SA2_LABEL(SetWindowRegion)(0, 104, v, 0, ((gStageTime >> 5) & 0x7F) + 160);
 
                     w = 232 - ((gStageTime >> 5) & 0x7F);
-                    SA2_LABEL(sub_80078D4)(0, w, 160, 0, ((gStageTime >> 5) & 0x7F) + 32);
+                    SA2_LABEL(SetWindowRegion)(0, w, 160, 0, ((gStageTime >> 5) & 0x7F) + 32);
                 }
             }
         }

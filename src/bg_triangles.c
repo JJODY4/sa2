@@ -765,7 +765,7 @@ void SA2_LABEL(sub_8007738)(u8 bg, int_vcount minY, int_vcount maxY, u16 param3,
     }
 }
 
-void SA2_LABEL(sub_8007858)(u8 param0, int_vcount minY, int_vcount maxY, u16 param3, u16 param4)
+void SA2_LABEL(SetWindowRegionExtended)(u8 param0, int_vcount minY, int_vcount maxY, u16 param3, u16 param4)
 {
     u16 *cursor;
 
@@ -825,7 +825,7 @@ const u16 gUnknown_082B5304[] = {
 #endif
 #endif
 
-void SA2_LABEL(sub_80078D4)(u8 bg, int_vcount minY, int_vcount maxY, u16 offsetEven, u16 offsetOdd)
+void SA2_LABEL(SetWindowRegion)(u8 bg, int_vcount minY, int_vcount maxY, u16 offsetEven, u16 offsetOdd)
 {
     s32 fillVal;
 

@@ -178,7 +178,7 @@ void Task_801CB80()
     }
 
     if (strc->unk432 != 0) {
-        SA2_LABEL(sub_80078D4)(3U, 0U, strc->unk432, 0xF0U, 0U);
+        SA2_LABEL(SetWindowRegion)(3U, 0U, strc->unk432, 0xF0U, 0U);
     }
 
     for (i = 0; i < MULTI_SIO_PLAYERS_MAX; i++) {
@@ -187,16 +187,16 @@ void Task_801CB80()
         }
 
         if (1 & i) {
-            SA2_LABEL(sub_80078D4)
+            SA2_LABEL(SetWindowRegion)
             (3U, strc->unk432 + (i * 40), strc->unk432 + ((i + 1) * 40), (DISPLAY_WIDTH - I(strc->qUnk430)), (-strc->unk432) & 0xFF);
         } else {
-            SA2_LABEL(sub_80078D4)
+            SA2_LABEL(SetWindowRegion)
             (3U, strc->unk432 + (i * 40), strc->unk432 + ((i + 1) * 40), (I(strc->qUnk430) - DISPLAY_WIDTH), (-strc->unk432) & 0xFF);
         }
     }
 
     if (strc->unk432 != 0) {
-        SA2_LABEL(sub_80078D4)(3U, (u8)(strc->unk432 + (i * 40)), DISPLAY_HEIGHT, DISPLAY_WIDTH, 0U);
+        SA2_LABEL(SetWindowRegion)(3U, (u8)(strc->unk432 + (i * 40)), DISPLAY_HEIGHT, DISPLAY_WIDTH, 0U);
     }
 }
 
@@ -302,7 +302,7 @@ void sub_801CF08()
 
     strc = TASK_DATA(gCurTask);
     if (strc->unk432 != 0) {
-        SA2_LABEL(sub_80078D4)(3U, 0U, strc->unk432, 240, 0U);
+        SA2_LABEL(SetWindowRegion)(3U, 0U, strc->unk432, 240, 0U);
     }
 
     for (i = 0; i < 4; i++) {
@@ -310,7 +310,7 @@ void sub_801CF08()
             break;
         }
 
-        SA2_LABEL(sub_80078D4)(3U, (strc->unk432 + (i * 0x28)), (strc->unk432 + ((i + 1) * 0x28)), 0U, (-strc->unk432) & 0xFF);
+        SA2_LABEL(SetWindowRegion)(3U, (strc->unk432 + (i * 0x28)), (strc->unk432 + ((i + 1) * 0x28)), 0U, (-strc->unk432) & 0xFF);
 
         if ((i == SIO_MULTI_CNT->id) || GetBit(gMultiplayerConnections, i)) {
             spriteStrc = &strc->sprites[gMultiplayerCharacters[i]];
@@ -322,7 +322,7 @@ void sub_801CF08()
     }
 
     if (strc->unk432 != 0) {
-        SA2_LABEL(sub_80078D4)(3U, (strc->unk432 + (i * 0x28)), 0xA0U, 0xF0U, 0U);
+        SA2_LABEL(SetWindowRegion)(3U, (strc->unk432 + (i * 0x28)), 0xA0U, 0xF0U, 0U);
     }
 }
 
